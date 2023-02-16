@@ -16,18 +16,17 @@ use App\Http\Controllers\CursoController; //importado el controlador
 |
 */
 
- Route::get('/', HomeController::class); 
+Route::get('/', HomeController::class); 
 
 
-
-Route::controller(CursoController::class)->group(function(){
+/* Route::controller(CursoController::class)->group(function(){
     //pagina principal
     Route::get('cursos', 'index');
     //crea curso
     Route::get('cursos/create', 'create');
     //muestra curso
     Route::get('cursos/{curso}', 'show');  
-});
+}); */
 
 
 

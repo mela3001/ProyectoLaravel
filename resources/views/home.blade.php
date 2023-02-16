@@ -33,7 +33,7 @@
                 <a class="nav-link" href="#nosotros">Nosotros</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="registro.html">Registrate</a>
+                <a class="nav-link" href="registro.blade.php">Registrate</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link " href="#contactar">Contactar</a>

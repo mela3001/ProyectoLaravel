@@ -16,7 +16,8 @@ use App\Http\Controllers\CursoController; //importado el controlador
 |
 */
 
-Route::get('/', HomeController::class);
+ Route::get('/', HomeController::class); 
+
 
 
 Route::controller(CursoController::class)->group(function(){

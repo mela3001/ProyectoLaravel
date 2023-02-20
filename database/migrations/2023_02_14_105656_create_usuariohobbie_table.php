@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('usuariohobbie', function (Blueprint $table) {
             $table->string('usuario', 20);
             $table->string('hobbie', 50);
+            $table->timestamps();
         });
     }
 

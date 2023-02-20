@@ -30,6 +30,7 @@ return new class extends Migration
             $table->date('fecha_nac');
             $table->tinyInteger('edad'); //----------calculado
             $table->string('preferencia', 50);
+            $table->timestamps();
         });
     }
 

@@ -17,12 +17,33 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        /* 
+        $table->string('name', 50);
+            $table->string('apellido', 50);
+            $table->string('usuario', 20)->unique();
+            $table->string('password');
+            $table->text('imagen'); //+255
+            $table->string('email')->unique();
+            $table->string('genero', 30);
+            $table->integer('telefono'); //----------de 9
+            $table->string('ciudad'); //-------------nombre de la ciudad
+            $table->date('fecha_nac');
+            $table->tinyInteger('edad'); //----------calculado
+            $table->string('preferencia', 50);
+        */
         return [
-            'name' => fake()->name(),
+            'name' => fake()->firstName(),
+            'apellido' => fake()->lastName(),
+            'usuario' => fake()->unique()->userName(),
+            'password' => fake()->password(),
+            'imagen' => fake()->randomElement(['usuarioChico.png', 'usuarioChica.png', 'usuarioOtro.png']),
             'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'remember_token' => Str::random(10),
+            'genero' => fake()->randomElement(['Hombre', 'Mujer', 'Otro']),
+            'telefono' => fake()->regexify('(\(6|7)([0-9]){8}'),
+            'ciudad' => fake()->randomElement(['Sevilla', 'Madrid', 'Barcelona', 'Valencia', 'Córdoba', 'Huelva', 'Jaén', 'Cádiz', 'Granada', 'Murcia', 'Salamanca', 'Teruel', 'León', 'Toledo', 'Badajoz', 'Ávila']),
+            'fecha_nac' => fake()->date($format = 'Y-m-d', $max = '2005-01-01'), 
+            'edad' => fake()->numberBetween($min = 18, $max = 90),
+            'preferencia' => fake()->randomElement(['Hombre', 'Mujer', 'Otro']),
         ];
     }
 
@@ -31,10 +52,10 @@ class UserFactory extends Factory
      *
      * @return static
      */
-    public function unverified()
-    {
-        return $this->state(fn (array $attributes) => [
-            'email_verified_at' => null,
-        ]);
-    }
+    // public function unverified()
+    // {
+    //     return $this->state(fn (array $attributes) => [
+    //         'email_verified_at' => null,
+    //     ]);
+    // }
 }

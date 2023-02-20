@@ -10,6 +10,7 @@
 </head>
 <body>
   {{-- header --}}
+  
   {{-- contenido --}}
   @yield('content');
   {{-- footer --}}

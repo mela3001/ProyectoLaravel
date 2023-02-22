@@ -16,7 +16,7 @@ use App\Http\Controllers\CursoController; //importado el controlador
 |
 */
 
-Route::get('/', HomeController::class); 
+Route::get('/', HomeController::class) -> name('home'); 
 
 
 /* Route::controller(CursoController::class)->group(function(){
@@ -27,6 +27,11 @@ Route::get('/', HomeController::class);
     //muestra curso
     Route::get('cursos/{curso}', 'show');  
 }); */
+
+Route::view('registro', 'registro') -> name('registro');
+Route::view('adminUsu', 'adminUsu') -> name('adminUsu');
+Route::view('adminHobbie', 'adminHobbie') -> name('adminHobbie');
+Route::view('adminCiudad', 'adminCiudad') -> name('adminCiudad');
 
 
 

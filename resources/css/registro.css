@@ -1,10 +1,9 @@
-/*custom font*/
+
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
 
-/*basic reset*/
+
 * {margin: 0; padding: 0;}
 
-/*form styles*/
 #msform {
 	width: 500px;
 	margin: 50px auto;
@@ -20,15 +19,12 @@
 	box-sizing: border-box;
 	width: 70%;
 	margin: 0 18%;
-	
-	/*stacking fieldsets above each other*/
 	position: relative;
 }
-/*Hide all except first fieldset*/
 #msform fieldset:not(:first-of-type) {
 	display: none;
 }
-/*inputs*/
+
 #msform .datos, #msform textarea {
 	padding: 15px;
 	border: 1px solid #ccc;
@@ -40,7 +36,7 @@
 	color: #2C3E50;
 	font-size: 13px;
 }
-/*buttons*/
+
 #msform .action-button {
 	width: 100px;
 	background: #27AE60;
@@ -57,7 +53,7 @@
 #msform .action-button:hover, #msform .action-button:focus {
 	box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
 }
-/*headings*/
+
 .fs-title {
 	font-size: 15px;
 	text-transform: uppercase;
@@ -70,11 +66,10 @@
 	color: #666;
 	margin-bottom: 20px;
 }
-/*progressbar*/
+
 #progressbar {
 	margin-bottom: 30px;
 	overflow: hidden;
-	/*CSS counters to number the steps*/
 	counter-reset: step;
 	display: inline-block;
 	width: 100%;
@@ -102,7 +97,6 @@
 	border-radius: 3px;
 	margin: 0 auto 5px auto;
 }
-/*progressbar connectors*/
 #progressbar li:after {
 	content: '';
 	width: 100%;
@@ -111,14 +105,13 @@
 	position: absolute;
 	left: -50%;
 	top: 9px;
-	z-index: -1; /*put it behind the numbers*/
+	z-index: -1; 
 }
 #progressbar li:first-child:after {
-	/*connector not needed before the first step*/
+
 	content: none; 
 }
-/*marking active/completed steps green*/
-/*The number of the step and the connector before it = green*/
+
 #progressbar li.active:before,  #progressbar li.active:after{
 	background: #27AE60;
 	color: white;

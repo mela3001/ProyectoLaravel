@@ -16,10 +16,9 @@
 <script src="chrome-extension://mooikfkahbdckldjjndioackbalphokd/assets/prompt.js"></script></head>
 
 <body translate="no">
-      <!-- HEAD -->
-      <header class="d-flex justify-content-center p-4">
-        <img src="../img/logo.png" alt="Bootstrap" class=" d-none d-md-inline img-fluid w-40">
-      </header>
+@include('layouts.plantillas')
+    <!-- HEAD -->
+    @yield('header')
     <!-- MAIN -->
     <main>
         <!-- NAV -->
@@ -32,16 +31,16 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav container-xl text-center d-flex justify-content-around">
               <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="home.blade.php">Inicio</a>
+                <a class="nav-link" aria-current="page" href="{{route('home')}}">Inicio</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="home.blade.php#nosotros">Nosotros</a>
+                <a class="nav-link" href="{{route('home')}}#nosotros">Nosotros</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Registrate</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="home.blade.php#contactar">Contactar</a>
+                <a class="nav-link " href="{{route('home')}}#contactar">Contactar</a>
               </li>
               <li>
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Iniciar Sesion</button>
@@ -104,19 +103,19 @@
                   <div class="form-check d-flex justify-content-start p-4">
                     <input class="form-check-input" type="radio" name="flexRadioDefault" id="femenino">
                     <label class="form-check-label" for="femenino">
-                      <img src="../img/genero-femenino.png" alt="" class="ps-2" style="max-width: 30px;"> Femenino
+                      <img src="img/genero-femenino.png" alt="" class="ps-2" style="max-width: 30px;"> Femenino
                     </label>
                   </div>
                   <div class="form-check d-flex justify-content-start p-4">
                     <input class="form-check-input" type="radio" name="flexRadioDefault" id="masculino" >
                     <label class="form-check-label" for="masculino">
-                      <img src="../img/genero-masculino.png" alt="" class="ps-2" style="max-width: 30px;"> Masculino
+                      <img src="img/genero-masculino.png" alt="" class="ps-2" style="max-width: 30px;"> Masculino
                     </label>
                   </div>
                   <div class="form-check d-flex justify-content-start p-4">
                     <input class="form-check-input" type="radio" name="flexRadioDefault" id="otro" >
                     <label class="form-check-label" for="otro">
-                      <img src="../img/genero-fluido.png" alt="" class="ps-2" style="max-width: 30px;"> Otro
+                      <img src="img/genero-fluido.png" alt="" class="ps-2" style="max-width: 30px;"> Otro
                     </label>
                   </div>
                   <input type="button" name="previous" class="previous action-button" value="Previous">
@@ -129,19 +128,19 @@
                   <div class="form-check d-flex justify-content-start p-4">
                     <input class="form-check-input" type="radio" name="flexRadioDefault" id="hombre">
                     <label class="form-check-label" for="hombre">
-                      <img src="../img/hombre.png" alt="" class="ps-2" style="max-width: 30px;"> Hombre
+                      <img src="img/hombre.png" alt="" class="ps-2" style="max-width: 30px;"> Hombre
                     </label>
                   </div>
                   <div class="form-check d-flex justify-content-start p-4">
                     <input class="form-check-input" type="radio" name="flexRadioDefault" id="mujer" >
                     <label class="form-check-label" for="mujer">
-                      <img src="../img/mujer.png" alt="" class="ps-2" style="max-width: 30px;"> Mujer
+                      <img src="img/mujer.png" alt="" class="ps-2" style="max-width: 30px;"> Mujer
                     </label>
                   </div>
                   <div class="form-check d-flex justify-content-start p-4">
                     <input class="form-check-input" type="radio" name="flexRadioDefault" id="todo" >
                     <label class="form-check-label" for="todo">
-                      <img src="../img/orgullo.png" alt="" class="ps-2" style="max-width: 30px;"> Todo
+                      <img src="img/orgullo.png" alt="" class="ps-2" style="max-width: 30px;"> Todo
                     </label>
                   </div>
                   <input type="button" name="previous" class="previous action-button" value="Previous">
@@ -230,12 +229,12 @@
 <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-<script id="rendered-js" src="../js/registro.js"></script>
+<script id="rendered-js" src="js/registro.js"></script>
 
   
 
 <script src="https://cpwebassets.codepen.io/assets/editor/iframe/iframeRefreshCSS-44fe83e49b63affec96918c9af88c0d80b209a862cf87ac46bc933074b8c557d.js"></script>
-<script src="../js/bootstrap.bundle.js"></script>
+<script src="js/bootstrap.bundle.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 

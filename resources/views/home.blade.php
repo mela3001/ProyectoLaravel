@@ -6,45 +6,18 @@
     <title>Bootstrap demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../css/bootstrap.csss">
-    <link rel="stylesheet" href="../css/estilo.css">
-
+    @vite(['resources/css/bootstrap.css'])
+    @vite(['resources/css/estilo.css'])
 </head>
   <body>
+    @include('layouts.plantillas')
+    
     <!-- HEAD -->
-    <header class="d-flex justify-content-center p-4">
-     <img src="../img/logo.png" alt="Bootstrap" class=" d-none d-md-inline img-fluid w-40">
-    </header>
+    @yield('header')
     <!-- MAIN -->
     <main>
       <!-- NAV -->
-      <nav class="border-top  navbar navbar-expand-md bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand fs-2 fw-bold text-primary text-uppercase d-md-none" href="#"><img src="../img/logo.png" alt="Bootstrap" class="img-fluid"></a>
-          <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav container-xl text-center d-flex justify-content-around">
-              <li class="nav-item">
-                <a class="nav-link" aria-current="page" href="#">Inicio</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#nosotros">Nosotros</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="registro.blade.php">Registrate</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link " href="#contactar">Contactar</a>
-              </li>
-              <li>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Iniciar Sesion</button>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+      @yield('nav')
       <!-- INICIO DE SESION -->
       <div class="modal fade" id="staticBackdrop"  data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
         <div class="modal-dialog modal-dialog-centered">
@@ -76,6 +49,9 @@
                   <button type="submit" class="btn btn-lg btn-primary display-4">Iniciar Sesion <i class="bi bi-arrow-up-right-square"></i></button>
                 </div>
               </form>
+              <div class="text-center mb-3 mbr-section-btn">
+                 <a href="{{route('adminUsu')}}">Entrar como admministrador</a>
+              </div>
             </div>
         </div>
         </div>
@@ -91,13 +67,13 @@
                         <p class="mbr-text display-7">Sea lo que sea que busques, con nosotros tendrás la oportunidad de encontrarlo.</p>
                         <p class="mbr-text display-7">Creemos que el amor puede estar en cualquier parte</p>
                         <p class="mbr-text display-7">Solo podrás encontrarlo si te arriesgas y pruebas</p>
-                        <div class="mbr-section-btn mt-4"><a class="btn btn-lg btn-primary display-4" href="registro.html" style="">Registrase</a></div>
+                        <div class="mbr-section-btn mt-4"><a class="btn btn-lg btn-primary display-4" href="{{route('registro')}}">Registrase</a></div>
                     </div>
                 </div>
                 <!-- imagen -->
                 <div class="col-4 col-lg-3 my-auto mx-auto d-none d-lg-inline">
                     <div class="image-wrapper">
-                        <img src="../img/principal.jpg" alt="" class="img-fluid">
+                        <img src="img/principal.jpg" alt="" class="img-fluid">
                     </div>
                 </div>
             </div>
@@ -114,7 +90,7 @@
               <!-- card 1 -->
               <div class="col-12 col-md-6 col-lg-4 ">
                 <div class="card" style="max-width: 26rem;">
-                  <img class="card-img-top img-fluid " src="../img/imagen.jpg" alt="Card image cap">
+                  <img class="card-img-top img-fluid " src="img/imagen.jpg" alt="Card image cap">
                   <div class="card-body">
                     <h5 class="card-title">Card title</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -125,7 +101,7 @@
               <!-- card 2 -->
               <div class="col-12 col-md-6 col-lg-4">
                 <div class="card" style="max-width: 26rem;">
-                  <img class=" card-img-top  img-fluid" src="../img/carrousel2.jpg" alt="Card image cap">
+                  <img class=" card-img-top  img-fluid" src="img/carrousel2.jpg" alt="Card image cap">
                   <div class="card-body">
                     <h5 class="card-title">Card title</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -136,7 +112,7 @@
               <!-- card 3 -->
               <div class="col-12 col-md-6 col-lg-4 ">
                 <div class="card" style="max-width: 26rem;">
-                  <img class="card-img-top img-fluid" src="../img/carrousel3.jpg" alt="Card image cap">
+                  <img class="card-img-top img-fluid" src="img/carrousel3.jpg" alt="Card image cap">
                   <div class="card-body">
                     <h5 class="card-title">Card title</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -183,37 +159,7 @@
   </main>
 
   <!-- FOOTER -->
-  <footer>
-      <div class="row d-flex justify-content-center bg-light mt-5">
-        <!-- descargar -->
-        <div class="col-12 col-md-6  d-flex flex-column align-items-center">
-            <h5>Puedes descargar a traves de:</h5>
-            <div class="d-flex flex-row">
-              <div class="text-center pe-3">
-                <a href=""><i class="bi bi-apple fs-2"></i></a>
-                <p>App Store</p>
-              </div>
-              <div class="text-center">
-                <a href=""><i class="bi bi-google-play fs-2"></i></a>
-                <p>Google Play</p>
-              </div>
-            </div>
-        </div>
-        <!-- redes sociales  -->
-        <div class="col-12 col-md-6 d-flex flex-column align-items-center">
-          <h5>Siguenos en:</h5>
-          <div>
-            <a href=""><i class="bi bi-facebook fs-2 p-3"></i></a>
-            <a href=""><i class="bi bi-instagram fs-2 p-3"></i></a>
-            <a href=""><i class="bi bi-twitter fs-2 p-3"></i></a>
-          </div>
-        </div>
-      </div>
-    <div class="row text-center bg-light">
-      <p class="text-center mt-2">Todos los derechos reservados. &copy; LitMacht</p>
-    </div>
-    
-  </footer>
+  @yield('footer')
 <script>
   (() => {
   'use strict'
@@ -234,7 +180,7 @@
   })
 })()
 </script>
-<script src="../js/bootstrap.bundle.js"></script>
+<script src="js/bootstrap.bundle.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   </body>

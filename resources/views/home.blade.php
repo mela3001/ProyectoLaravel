@@ -131,25 +131,27 @@
             <div class="card-wrapper text-center p-0">
               <h4 class="mbr-section-title fs-2 p-3"><strong>Contacta con Nosotros</strong></h4>
               <div class="p-5">
-                  <form action="https://mobirise.eu/" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name"><input type="hidden" name="email" data-form-email="true" value="ksaZGCsIleL6fEgnIf9zO/g37Z+1R68AqWnr0JMt+OTyb7GVjLrfyMh+Xdp7/GvKPmj4XltFyBENUbvyln6p7uqYD1pZWpkS6vSQGIF3mhNcykpKiOR/qHl2p/qjASly.wNM4G6uCCrJbQVpXsLZMVV3vetepJJKh9eUtCUZgTeVHySvR8NUOGlrha1+BeWlntePuUcXC0VmXfq0vZD8ozN3w3Ef1A0WKGdisk3XtAOWwBH7iEfKbkl/si2J1wjwt">
+                  <form action="{{route('store')}}" method="post" class="mbr-form form-with-styler" data-form-title="Form Name">
+                    <input type="hidden" name="email" data-form-email="true" value="ksaZGCsIleL6fEgnIf9zO/g37Z+1R68AqWnr0JMt+OTyb7GVjLrfyMh+Xdp7/GvKPmj4XltFyBENUbvyln6p7uqYD1pZWpkS6vSQGIF3mhNcykpKiOR/qHl2p/qjASly.wNM4G6uCCrJbQVpXsLZMVV3vetepJJKh9eUtCUZgTeVHySvR8NUOGlrha1+BeWlntePuUcXC0VmXfq0vZD8ozN3w3Ef1A0WKGdisk3XtAOWwBH7iEfKbkl/si2J1wjwt">
+                  @csrf
                   <div class="row">
                       <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Gracias por contactar con nosotros</div>
                   </div>
                   <div class="dragArea row">
                       <div class="col-lg-6 col-md-12 col-sm-12 form-group mb-3" data-for="Nombre">
-                          <input type="text" name="name" placeholder="Nombre" data-form-field="Nombre" class="form-control display-7" value="" id="">
+                          <input type="text" name="name" placeholder="Nombre" data-form-field="Nombre" class="form-control display-7" value="name" id="name">
                       </div>
                       <div data-for="email" class="col-lg-6 col-md-12 col-sm-12 form-group mb-3">
-                          <input type="email" name="email" placeholder="Email" data-form-field="email" class="form-control display-7" value="" id="">
+                          <input type="email" name="email" placeholder="Email" data-form-field="email" class="form-control display-7" value="email" id="email">
                       </div>
                       <div data-for="phone" class="col-lg-6 col-md-12 col-sm-12 form-group mb-3">
-                          <input type="tel" name="phone" placeholder="Telefono" data-form-field="phone" class="form-control display-7" value="" id="">
+                          <input type="tel" name="phone" placeholder="Telefono" data-form-field="phone" class="form-control display-7" value="phone" id="phone">
                       </div>
                       <div data-for="message" class="col-lg-12 col-md-12 col-sm-12 form-group mb-3">
-                          <textarea name="message" placeholder="Mensaje" data-form-field="message" class="form-control display-7" id=""></textarea>
+                          <textarea  name ="mensaje" placeholder="Mensaje" data-form-field="message" class="form-control display-7" id="mensaje"></textarea>
                       </div>
                    </div>
-                   <div class="mbr-section-btn mt-4"><a class="btn btn-lg btn-primary display-4" href="" style="">Registrase</a></div>
+                   <div class="mbr-section-btn mt-4"><button type="submit" class="btn btn-lg btn-primary display-4">Contactar...<i class="bi bi-telephone-forward"></i></button></div>
                   </form>
               </div>
           </div>

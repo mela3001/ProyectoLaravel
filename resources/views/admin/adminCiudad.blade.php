@@ -6,6 +6,7 @@
     <title>Bootstrap demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
     @vite(['resources/css/bootstrap.css'])
 </head>
   <body>
@@ -47,6 +48,11 @@
                       <i class="bi bi-geo-alt  me-2"></i> Ciudades
                     </a>
                 </li>
+                <li>
+                    <a href="{{route('adminContacta')}}" class="nav-link text-white">
+                    <i class="bi bi-telephone-inbound"></i> Contactos
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
@@ -54,37 +60,55 @@
     <!-- MAIN -->
     <main>
         <div class="container container-fluid d-flex align-items-center flex-column ">
-            <h2 class="m-4">Administracion de Usuarios</h2>
-            <a href="formCli.html" class="text-white text-decoration-none bg-success text-center p-4">
-                <i class="bi bi-person-add fs-3"></i>
+            <h2 class="m-4">Administracion de Ciudades</h2>
+            <a href="formCli.html" class="text-white text-decoration-none bg-success text-center p-4" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+            <i class="bi bi-geo-alt  fs-2"></i>
                 <h2>Nuevo</h2>
             </a>
-            <h2 class="m-5">Listado de Usuarios </h2>
+            <h2 class="m-5">Listado de Ciudades </h2>
             <table class="table text-center">
                 <thead>
                   <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Nombre</th>
-                    <th scope="col">Uusario</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Genero</th>
-                    <th scope="col">Telefono</th>
-                    <th scope="col">Ciudad</th>
-                    <th scope="col">Nacimiento</th>
-                    <th scope="col">Preferencia</th>
                     <th scope="col">Acciones</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <!-- FOR CON TODOS LOS DATOS  -->
-                  <!-- <a class="btn btn-danger d-block d-lg-inline">Borrar</a> 
-                  <a class="btn btn-success d-block d-lg-inline mt-3">Editar</a> 
-                  <a class="btn btn-info d-block d-lg-inline mt-3">Ver</a> -->
-                  <!-- <tr>
-                    
-                  </tr> -->
+                @foreach ($ciudades as $ciudad)
+                  <tr>
+                      <td>{{$ciudad->id}}</td>
+                      <td>{{$ciudad->nombre}}</td>
+                      <td>
+                      </td>
+                  </tr>    
+               @endforeach
                 </tbody>
               </table>
+        </div>
+
+        <!--    AÑADIR Ciudad  -->
+        <div class="modal fade" id="staticBackdrop"  data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
+            <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header text-center">
+                <h5 class="text-center">Añadir Ciudad</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+                <div class="modal-body">
+                  <form action="{{route('anadirCiudad')}}" class="needs-validation" method="post" novalidate>
+                  @csrf  
+                  <div class="m-3 form-floating position-relative">
+                      <input type="text" class="form-control" id="nombre" placeholder="nombre" name="nombre" required >
+                      <label for="nombre" class="form-label">Nombre</label>
+                    </div>
+                    <div class="text-center mb-3 mbr-section-btn">
+                      <button type="submit" class="btn btn-lg btn-primary display-4">Añadir <i class="bi bi-arrow-up-right-square"></i></button>
+                    </div>
+                  </form>
+                </div>
+            </div>
+            </div>
         </div>
     </main>
 

@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 use App\Models\Hobbie;
 use Illuminate\Http\Request;
-class adminController extends Controller
+
+class registroController extends Controller
 {
-    public function index(){
+    public function registroHobbie(){
         $hobbies = Hobbie::all();
-        return view('adminRegistroGet' ,  compact('hobbies'));
+        return view('registro' ,  compact('hobbies'));
     }
+
 }

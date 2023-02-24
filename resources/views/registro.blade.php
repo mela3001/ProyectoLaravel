@@ -2,10 +2,11 @@
   <meta charset="UTF-8">
   <meta name="apple-mobile-web-app-title" content="CodePen">
   <title>Registro</title>
-  <link rel="stylesheet" href="css/registro.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/estilo.css">
+  <link rel="stylesheet" href="css/registro.css">
+  @vite(['resources/css/bootstrap.css'])
+  @vite(['resources/css/estilo.css'])
+  @vite(['resources/js/registro.js'])
   <script>
   if (document.location.search.match(/type=embed/gi)) {
     window.parent.postMessage("resize", "*");
@@ -151,6 +152,9 @@
                 <fieldset>
                   <h2 class="fs-title">Algunos de mis hobbies son ..</h2>
                   <!-- select de hobies -->
+                   @foreach ($hobbies as $hobbie)
+                      <label><input type="checkbox" id="{{$hobbie->nombre}}" value="{{$hobbie->nombre}}"> {{$hobbie->nombre}}</label><br>
+                   @endforeach
                   <input type="button" name="previous" class="previous action-button" value="Previous">
                   <input type="button" name="next" class="next action-button" value="Next">
                 </fieldset>

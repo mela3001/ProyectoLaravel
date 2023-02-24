@@ -30,4 +30,5 @@ Route::post('adminCiudad', [adminController::class, 'anadirCiudad']) -> name('an
 
 Route::get('adminContacta', [adminController::class, 'adminContacta']) -> name('adminContacta');
 
-Route::view('registro', 'registro') -> name('registro');
+
+Route::get('registro', [adminController::class, 'registroHobbie']) -> name('registro');

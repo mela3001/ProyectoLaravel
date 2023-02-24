@@ -102,29 +102,7 @@
               </table>
         </div>
 
-        <!-- AÑADIR USUARIO -->
-        <div class="modal fade" id="staticBackdrop"  data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
-            <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-              <div class="modal-header text-center">
-                <h5 class="text-center">Añadir Usuario</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-                <div class="modal-body">
-                  <form action="{{route('anadirUsuario')}}" class="needs-validation" method="post" novalidate>
-                  @csrf  
-                  <div class="m-3 form-floating position-relative">
-                      <input type="text" class="form-control" id="nombre" placeholder="nombre" name="nombre" required >
-                      <label for="nombre" class="form-label">Nombre</label>
-                    </div>
-                    <div class="text-center mb-3 mbr-section-btn">
-                      <button type="submit" class="btn btn-lg btn-primary display-4">Añadir <i class="bi bi-arrow-up-right-square"></i></button>
-                    </div>
-                  </form>
-                </div>
-            </div>
-            </div>
-        </div>
+        
     </main>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>

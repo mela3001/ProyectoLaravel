@@ -46,7 +46,8 @@
                   </div>
                 </div>
                 <div class="text-center mb-3 mbr-section-btn">
-                  <button type="submit" class="btn btn-lg btn-primary display-4">Iniciar Sesion <i class="bi bi-arrow-up-right-square"></i></button>
+                  <a class="btn btn-lg btn-primary display-4" href="{{route('inicio')}}">Iniciar sesión<i class="bi bi-arrow-up-right-square"></i></a>
+                  
                 </div>
               </form>
               <div class="text-center mb-3 mbr-section-btn">

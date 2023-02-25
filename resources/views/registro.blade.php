@@ -152,9 +152,9 @@
                 <fieldset>
                   <h2 class="fs-title">Algunos de mis hobbies son ..</h2>
                   <!-- select de hobies -->
-                   @foreach ($hobbies as $hobbie)
-                      <label><input type="checkbox" id="{{$hobbie->nombre}}" value="{{$hobbie->nombre}}"> {{$hobbie->nombre}}</label><br>
-                   @endforeach
+                  @foreach ($hobbies as $hobbie)
+                  <label><input type="checkbox" id="{{$hobbie->nombre}}" value="{{$hobbie->nombre}}"> {{$hobbie->nombre}}</label><br>
+               @endforeach
                   <input type="button" name="previous" class="previous action-button" value="Previous">
                   <input type="button" name="next" class="next action-button" value="Next">
                 </fieldset>
@@ -176,11 +176,10 @@
                   <div class="input-group mb-3">
                     <label class="input-group-text" for="inputGroupSelect01">Ciudad</label>
                     <select class="form-select" id="inputGroupSelect01">
-                      <option selected>Elige...</option>
                       <!-- select ciudades -->
-                      <option value="1">One</option>
-                      <option value="2">Two</option>
-                      <option value="3">Three</option>
+                      @foreach ($ciudades as $ciudad)
+                        <option value="{{$ciudad->nombre}}">{{$ciudad->nombre}}</option>
+                      @endforeach
                     </select>
                   </div>
                   <input type="button" name="previous" class="previous action-button" value="Previous">

@@ -19,7 +19,19 @@ class adminController extends Controller
     }
     public function registroHobbie(){
         $hobbies = Hobbie::all();
-        return view('registro' ,  compact('hobbies'));
+        $ciudades = Ciudad::all();
+
+        $data = [
+            'hobbies' => $hobbies,
+            'ciudades' => $ciudades,
+        ];
+
+        return view('registro' , $data);
+    }
+
+    public function inicioPagina(){
+        $usuarios = User::all();
+        return view('inicio' ,  compact('usuarios'));
     }
 
     public function adminCiudad(){

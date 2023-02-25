@@ -32,3 +32,4 @@ Route::get('adminContacta', [adminController::class, 'adminContacta']) -> name('
 
 
 Route::get('registro', [adminController::class, 'registroHobbie']) -> name('registro');
+Route::get('inicio', [adminController::class, 'inicioPagina']) -> name('inicio');

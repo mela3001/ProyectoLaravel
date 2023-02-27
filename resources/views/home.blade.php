@@ -50,9 +50,6 @@
                   <input type="submit" value="Iniciar sesión" class="btn btn-lg btn-primary display-4">
                 </div>
               </form>
-              <div class="text-center mb-3 mbr-section-btn">
-                 <a href="{{route('adminUsu')}}">Entrar como admministrador</a>
-              </div>
             </div>
         </div>
         </div>

@@ -27,7 +27,8 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
             <div class="modal-body">
-              <form action="adminCli.html" class="needs-validation" novalidate>
+              <form action="{{route('inicio')}}" class="needs-validation" novalidate>
+              @csrf
                 <div class="m-3 form-floating position-relative">
                   <input type="email" name="email" id="input-email" class="form-control" placeholder=" " required />
                   <label for="input-email" class="form-label">Direccion de email</label>
@@ -38,7 +39,7 @@
                   <div class="invalid-tooltip">Email no valido</div>
                 </div>
                 <div class="m-3 form-floating position-relative">
-                  <input type="password" class="form-control" id="password" placeholder="Password" required minlength="8" maxlength="20">
+                  <input type="password" name="password" class="form-control" id="password" placeholder="Password" required minlength="8" maxlength="20">
                   <label for="input-password" class="form-label">Contraseña</label>
                   <div id="password-help-block" class="form-text">
                     Tu contraseña debe tener entre 8 y 20 caracteres, contener
@@ -46,8 +47,7 @@
                   </div>
                 </div>
                 <div class="text-center mb-3 mbr-section-btn">
-                  <a class="btn btn-lg btn-primary display-4" href="{{route('inicio')}}">Iniciar sesión<i class="bi bi-arrow-up-right-square"></i></a>
-                  
+                  <input type="submit" value="Iniciar sesión" class="btn btn-lg btn-primary display-4">
                 </div>
               </form>
               <div class="text-center mb-3 mbr-section-btn">

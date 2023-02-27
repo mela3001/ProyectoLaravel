@@ -49,7 +49,13 @@
                 <h6>Me considero <b>{{$usuario->genero}}</b>.</h6>
                 <h6>Busco: <b>{{$usuario->preferencia}}</b>.</h6>
                 <h6>Si quieres saber más de mí, llámame: <b>{{$usuario->telefono}}</b></h6>
-                <a href="#" class="boton" data-id="1"><i class="bi bi-suit-heart"></i></a>
+                <div class="boton">
+                    <i class="bi bi-suit-heart"></i>
+                    <form action="">
+
+                    </form>
+                </div>
+                
               </div>
             </div>
           @endforeach

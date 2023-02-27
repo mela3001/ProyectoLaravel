@@ -29,9 +29,36 @@ class adminController extends Controller
         return view('registro' , $data);
     }
 
-    public function inicioPagina(){
+    public function inicioPagina(Request $request){
+        $email = $request->email;
+        $contraseña = $request->password;
+        $loginCorrecto=false;
+        $datosUsuarioIniciado = [];
+
         $usuarios = User::all();
-        return view('inicio' ,  compact('usuarios'));
+        foreach($usuarios as $usuario){
+            if(($usuario -> email) == $email ){
+                if(($usuario -> password) == $contraseña ){
+                    $loginCorrecto=true;
+                    $datosUsuarioIniciado = [
+                        'email' => $email,
+                        'usuario' => $usuario -> usuario
+                    ];
+                } 
+            }
+        }
+
+        if($loginCorrecto){
+            $data = [
+                'usuarios' => $usuarios,
+                'datos' => $datosUsuarioIniciado
+            ];
+    
+            return view('inicio' , $data);
+        }else{
+            return view('home');
+        }
+       
     }
 
     public function adminCiudad(){

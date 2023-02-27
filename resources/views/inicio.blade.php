@@ -13,11 +13,13 @@
   <body>
     <!-- HEADER -->
     <header class="container-fluid p-3 d-flex w-100 ">
-            
-            <div class="col-6 d-flex justify-content-center">
+            <div class="col d-flex justify-content-center align-items-center">
               <img src="img/logo.png" alt="">
             </div>
-            <div class="col d-flex justify-content-center">
+            <div class="col d-flex justify-content-center align-items-center d-none d-sm-none d-md-block">
+              <h5 class=" d-flex justify-content-center align-items-center"><i class="bi bi-person-circle"></i>{{session('usuario')}}</h5>
+            </div>
+            <div class="col d-flex justify-content-center align-items-center">
                 <form action="">
                   <img src="img/poder.png" alt="" style="max-width: 30px;" class="">
                   <a class="btn btn-outline-danger" href="{{route('home')}}">Cerrar Sesión</a>

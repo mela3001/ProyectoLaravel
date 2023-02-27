@@ -40,18 +40,14 @@ class adminController extends Controller
             if(($usuario -> email) == $email ){
                 if(($usuario -> password) == $contraseña ){
                     $loginCorrecto=true;
-                    $datosUsuarioIniciado = [
-                        'email' => $email,
-                        'usuario' => $usuario -> usuario
-                    ];
+                    session(['usuario' => $usuario -> usuario]);
                 } 
             }
         }
 
         if($loginCorrecto){
             $data = [
-                'usuarios' => $usuarios,
-                'datos' => $datosUsuarioIniciado
+                'usuarios' => $usuarios
             ];
     
             return view('inicio' , $data);

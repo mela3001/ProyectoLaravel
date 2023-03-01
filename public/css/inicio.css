@@ -28,7 +28,11 @@
     background-color: white;
     display: flex;
     flex-direction: column;
-    align-items: center
+    align-items: center;
+    transition: all 0.5s;
+  }
+  .curso:hover{
+    transform: scale(1.05)
   }
   .cursos .curso .imagen-curso {
     width: 100%;
@@ -87,7 +91,8 @@
 
   /* tab */
   .tab-content{
-    background-color: rgb(235, 85, 85);
+    /* background: linear-gradient(90deg, rgba(255,1,62,0.8016456582633054) 0%, rgba(255,119,0,0.7988445378151261) 89%, rgba(255,205,0,0.8044467787114846) 100%); */
+  
   }
 
   /* .nav-tabs .nav-link.active{
@@ -112,3 +117,65 @@
      padding : 5px 15px;
   } */
   
+
+  /* perfil */
+
+  .form-control:focus {
+    box-shadow: none;
+    border-color: #BA68C8
+}
+
+.profile-button {
+    background: rgb(99, 39, 120);
+    box-shadow: none;
+    border: none
+}
+
+.profile-button:hover {
+    background: #682773
+}
+
+.profile-button:focus {
+    background: #682773;
+    box-shadow: none
+}
+
+.profile-button:active {
+    background: #682773;
+    box-shadow: none
+}
+
+.back:hover {
+    color: #682773;
+    cursor: pointer
+}
+
+.labels {
+    font-size: 11px
+}
+
+.add-experience:hover {
+    background: #BA68C8;
+    color: #fff;
+    cursor: pointer;
+    border: solid 1px #BA68C8
+}
+
+/* perfil imagen */
+
+.columna1 {
+  width: 350px;
+  background-color: #efefef;
+  border-radius: 0.5rem 0 0 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.image img {
+  transition: all 0.5s
+}
+
+.columna1:hover .image img {
+  transform: scale(1.5)
+}

@@ -256,16 +256,17 @@
         @if(($usuario->usuario) == session('usuario'))
         <div class="row">
           {{-- primera columna --}}
-            <div class="columna1 col-md-4 border-right">
+            <div class="columna1 
+            col-md-4 border-right">
               {{-- imagen usuario --}}
                 <div class="image d-flex flex-column align-items-center text-center p-3 py-5"> {{-- imagen --}}
-                  <button class="btn btn-secondary"> 
+                  <button class="btn"> 
                     <img class="rounded-circle mt-5" width="150px" src="img/{{$usuario->imagen}}">
                   </button>
                 </div>
                 {{-- usuario y email --}}
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                  <span class="font-weight-bold">{{$usuario->usuario}}</span>
+                  <h2 class="font-weight-bold">{{$usuario->usuario}}</h2>
                   <span class="text-black-50">{{$usuario->email}}</span>
                 </div>
             </div>

@@ -1,9 +1,10 @@
 <html lang="en"><head>
   <meta charset="UTF-8">
   <meta name="apple-mobile-web-app-title" content="CodePen">
-  <title>Registro</title>
+  <title>LitMatch</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
   <link rel="stylesheet" href="css/registro.css">
+  <link rel="icon" type="image/x-icon" href="img/ms-icon-150x150.png" />
   @vite(['resources/css/bootstrap.css'])
   @vite(['resources/css/estilo.css'])
   @vite(['resources/js/registro.js'])

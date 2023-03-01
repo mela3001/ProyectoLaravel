@@ -59,7 +59,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
             <div class="modal-body">
-              <form action="adminCli.html" class="needs-validation" novalidate>
+              <form action="{{route('inicio')}}" class="needs-validation" novalidate>
                 <div class="m-3 form-floating position-relative">
                   <input type="email" name="email" id="input-email" class="form-control" placeholder=" " required />
                   <label for="input-email" class="form-label">Direccion de email</label>
@@ -152,9 +152,13 @@
                 <fieldset>
                   <h2 class="fs-title">Algunos de mis hobbies son ..</h2>
                   <!-- select de hobies -->
+                  <div class="row p-3">
                   @foreach ($hobbies as $hobbie)
-                  <label><input type="checkbox" id="{{$hobbie->nombre}}" value="{{$hobbie->nombre}}"> {{$hobbie->nombre}}</label><br>
-               @endforeach
+                    <div class="col-6 d-flex justify-content-start ">
+                      <label><input type="checkbox" id="{{$hobbie->nombre}}" value="{{$hobbie->nombre}}"> {{$hobbie->nombre}}</label><br>
+                    </div>
+                  @endforeach
+                  </div>
                   <input type="button" name="previous" class="previous action-button" value="Previous">
                   <input type="button" name="next" class="next action-button" value="Next">
                 </fieldset>

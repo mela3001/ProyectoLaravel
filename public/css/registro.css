@@ -21,6 +21,7 @@
 	margin: 0 18%;
 	position: relative;
 }
+
 #msform fieldset:not(:first-of-type) {
 	display: none;
 }

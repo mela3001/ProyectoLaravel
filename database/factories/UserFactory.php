@@ -43,7 +43,7 @@ class UserFactory extends Factory
             'ciudad' => fake()->randomElement(['Sevilla', 'Madrid', 'Barcelona', 'Valencia', 'Córdoba', 'Huelva', 'Jaén', 'Cádiz', 'Granada', 'Murcia', 'Salamanca', 'Teruel', 'León', 'Toledo', 'Badajoz', 'Ávila']),
             'fecha_nac' => fake()->date($format = 'Y-m-d', $max = '2005-01-01'), 
             'edad' => fake()->numberBetween($min = 18, $max = 90),
-            'preferencia' => fake()->randomElement(['Hombre', 'Mujer', 'Otro']),
+            'preferencia' => fake()->randomElement(['Hombre', 'Mujer', 'Todo']),
         ];
     }
 

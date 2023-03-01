@@ -19,10 +19,7 @@
               <img src="img/logo.png" alt="">
             </div>
             <div class="col d-flex justify-content-evenly">
-                <form action="">
-                  <img src="img/poder.png" alt="" style="max-width: 30px;" class="">
-                  <input type="submit" value="Cerrar Sesion" class="btn btn-outline-danger">
-                </form>
+              <a class="btn btn-outline-danger" href="{{route('home')}}">Cerrar Sesión</a>
             </div>
     </header>
     <!--  ASIDE-->

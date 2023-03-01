@@ -77,8 +77,7 @@
                       <td>{{$contacto->email}}</td>
                       <td>{{$contacto->telefono}}</td>
                       <td>{{$contacto->mensaje}}</td>
-                      <td>
-                      </td>
+                      <td><a href="{{route('deleteContacta', $contacto->id)}}" class="btn btn-outline-danger">Eliminar</a></td>
                   </tr>    
                @endforeach
                 </tbody>

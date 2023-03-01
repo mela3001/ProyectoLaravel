@@ -95,7 +95,7 @@
                       <td>{{$usuario->ciudad}}</td>
                       <td>{{$usuario->fecha_nac}}</td>
                       <td>{{$usuario->preferencia}}</td>
-                      <td></td>
+                      <td> <a href="{{route('deleteUsu', $usuario->id)}}" class="btn btn-outline-danger">Eliminar</a></td>
                   </tr>    
                @endforeach
                 </tbody>

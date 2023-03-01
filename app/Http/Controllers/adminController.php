@@ -43,6 +43,7 @@ class adminController extends Controller
                             $loginAdminCorrecto = true;
                             session()->forget('usuario');
                             session(['usuario' => $usuario -> usuario] );
+                            session(['usuarioId' => $usuario -> id] );
                         }
                     }else{
                         $loginCorrecto=true;
@@ -123,6 +124,54 @@ class adminController extends Controller
          return view('admin.adminCiudad' ,  compact('ciudades'));
      }
 
+    /* ELIMINA USUARIOS */
+    public function deleteUsu($usuarioId)
+    {
+        $usuario = User::find($usuarioId);
+        $usuario -> delete();
+        $usuarios = User::all();
+        return view('admin.adminUsu' ,  compact('usuarios'));
+    }
+
+    /* ELIMINA CIUDADES */
+    public function deleteCiudad($ciudadId)
+    {
+        $ciudad = Ciudad::find($ciudadId);
+        $ciudad -> delete();
+        $ciudades = Ciudad::all();
+        return view('admin.adminCiudad' ,  compact('ciudades'));
+    }
+
+     /* ELIMINA HOBBIES */
+     public function deleteHobbie($hobbieId)
+     {
+         $hobbie = Hobbie::find($hobbieId);
+         $hobbie -> delete();
+         $hobbies = Hobbie::all();
+         return view('admin.adminHobbie' ,  compact('hobbies'));
+     }
+
+     /* ELIMINA CONTACTO */
+     public function deleteContacta($contactaId)
+     {
+         $contacta = Contacta::find($contactaId);
+         $contacta -> delete();
+         $contactos = Contacta::all();
+         return view('admin.adminContacta' ,  compact('contactos'));
+     }
+
+     /* MODIFICA HOBBIE */
+     public function updateHobbie(Request $request, $hobbieId)
+     { 
+        $hobbies = Hobbie::all();
+        foreach($hobbies as $hobbie){
+            if($hobbie->id == $hobbieId){
+                 $hobbie->nombre = $request->nombre;
+                 $hobbie->save();
+            }
+        }
+        return view('admin.adminHobbie' ,  compact('hobbies'));
+     }
 
 /* -------------PAGINA DE INICIO AL ACCEDER UN USUARIO-------------------- */
 

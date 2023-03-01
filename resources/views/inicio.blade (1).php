@@ -4,15 +4,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bootstrap demo</title>
+  <title>LitMatch</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
   <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
   <link rel="stylesheet" href="css/inicio.css">
+  {{-- perfil --}}
+  {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"> --}}
+  {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"> --}}
+  {{-- favicon --}}
+  <link rel="icon" type="image/x-icon" href="img/ms-icon-150x150.png" />
   @vite(['resources/css/bootstrap.css'])
 </head>
 
 <body>
+  {{-- Añade la plantilla --}}
+  @include('layouts.plantillas')
+
   <!-- HEADER -->
   <header class="container-fluid p-3 d-flex w-100 ">
     <div class="col d-flex justify-content-center align-items-center">
@@ -35,6 +43,7 @@
       <button class="nav-link col-3" id="color nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Perfil</button>
     </div>
   </nav>
+  <main>
   <div class="tab-content d-flex justify-content-center" id="nav-tabContent">
     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
       {{-- INICIO --}}
@@ -43,9 +52,10 @@
         @php
           $numUsuarios = 0;
         @endphp
-
+        
         @foreach ($usuarios as $usuario)
         @if(($usuario->usuario) != session('usuario'))
+        {{-- PREFIERE HOMBRE--}}
           @if(session('preferenciaUsuarioActivo') == 'Hombre')
             @if(($usuario->genero == 'Hombre' && $usuario->preferencia == session('generoUsuarioActivo')) || ($usuario->genero == 'Hombre' && $usuario->preferencia == 'Todo') )
             <div class="curso">
@@ -65,10 +75,7 @@
                     @csrf
                     <input type="hidden" value="{{session('usuario')}}" name="usuarioDaMg">
                     <input type="hidden" value="{{$usuario->usuario}}" name="usuarioRecibeMg">
-                    <div class="boton">
-                      <i class="bi bi-heart-fill"></i>
-                      <input type="submit" value="Dar mg" class="boton">
-                    </div>
+                    <button class="boton" type="submit"><i class="bi bi-heart-fill"></i></button>
                   </form>
                 </div>
               </div>
@@ -76,6 +83,7 @@
                   $numUsuarios ++;
                   @endphp
             @endif
+            {{-- PREFIERE MUJER --}}
           @elseif(session('preferenciaUsuarioActivo') == 'Mujer')
             @if(($usuario->genero == 'Mujer' && $usuario->preferencia == session('generoUsuarioActivo')) || ($usuario->genero == 'Mujer' && $usuario->preferencia == 'Todo') )
               <div class="curso">
@@ -95,10 +103,7 @@
                       @csrf
                       <input type="hidden" value="{{session('usuario')}}" name="usuarioDaMg">
                       <input type="hidden" value="{{$usuario->usuario}}" name="usuarioRecibeMg">
-                      <div class="boton">
-                        <i class="bi bi-heart-fill"></i>
-                        <input type="submit" value="Dar mg" class="boton">
-                      </div>
+                      <button class="boton" type="submit"><i class="bi bi-heart-fill"></i></button>
                     </form>
                   </div>
                 </div>
@@ -107,6 +112,7 @@
                   @endphp
             @endif
           @else
+          {{-- PREFIERE TODO --}}
             @if($usuario->preferencia == session('generoUsuarioActivo') || $usuario->preferencia == 'Todo')
               <div class="curso">
                     <div class="curso__imagen">
@@ -125,10 +131,7 @@
                         @csrf
                         <input type="hidden" value="{{session('usuario')}}" name="usuarioDaMg">
                         <input type="hidden" value="{{$usuario->usuario}}" name="usuarioRecibeMg">
-                        <div class="boton">
-                          <i class="bi bi-heart-fill"></i>
-                          <input type="submit" value="Dar mg" class="boton">
-                        </div>
+                        <button class="boton" type="submit"><i class="bi bi-heart-fill"></i></button>
                       </form>
                     </div>
                   </div>
@@ -140,10 +143,11 @@
         @endif
         @endforeach
         <h4 class="bg-white text-dark mt-4 text-center">{{$numUsuarios}} usuarios compatibles</h4>
+        <br>
       </div>
     </div>
+    {{--GALERÍA DE ME GUSTAS --}}
     <div class="tab-pane fade w-70" id="nav-gusto" role="tabpanel" aria-labelledby="nav-gusto-tab">
-      {{-- ME GUSTAS --}}
       <nav class="container-fluid p-3 row d-flex w-100 justify-content-center">
         <div class="nav nav-tabs w-100 justify-content-center " id="nav-tab" role="tablist">
           <button class="text-white nav-link col active" id="color nav-megusta-tab" data-bs-toggle="tab" data-bs-target="#nav-megusta" type="button" role="tab" aria-controls="nav-megusta" aria-selected="false">ME GUSTA</button>
@@ -172,10 +176,7 @@
                       @csrf
                       <input type="hidden" value="{{session('usuario')}}" name="usuarioDaMg">
                       <input type="hidden" value="{{$usuario->usuario}}" name="usuarioRecibeMg">
-                      <div class="boton">
-                        <i class="bi bi-heart-fill"></i>
-                        <input type="submit" value="Quitar mg" class="boton">
-                      </div>
+                      <button class="boton" type="submit"><i class="bi bi-heart-fill"></i></button>
                     </form>
                   </div>
                 </div>
@@ -185,7 +186,7 @@
           @endforeach
         </div>
       </div>
-      <!-- le gusto -->
+      <!-- LE GUSTO -->
       <div class="tab-pane fade show active w-100" id="nav-legusto" role="tabpanel" aria-labelledby="nav-legusto-tab">
         <div class="row container-fluid d-flex w-100 justify-content-center cursos contenedor">
           @foreach($megustas as $mg)
@@ -206,10 +207,7 @@
                       @csrf
                       <input type="hidden" value="{{session('usuario')}}" name="usuarioDaMg">
                       <input type="hidden" value="{{$usuario->usuario}}" name="usuarioRecibeMg">
-                      <div class="boton">
-                        <i class="bi bi-heart-fill"></i>
-                        <input type="submit" value="Quitar mg" class="boton">
-                      </div>
+                      <button class="boton" type="submit"><i class="bi bi-heart-fill"></i></button>
                     </form>
                   </div>
                 </div>
@@ -219,7 +217,7 @@
           @endforeach
         </div>
       </div>
-      <!-- compatibles -->
+      <!-- COMPATIBLES -->
       <div class="tab-pane fade show active w-100" id="nav-compatible" role="tabpanel" aria-labelledby="nav-compatible-tab">
         <div class="row container-fluid d-flex w-100 justify-content-center cursos contenedor">
           @foreach($megustas as $mg)
@@ -239,10 +237,7 @@
                       @csrf
                       <input type="hidden" value="{{session('usuario')}}" name="usuarioDaMg">
                       <input type="hidden" value="{{$usuario->usuario}}" name="usuarioRecibeMg">
-                      <div class="boton">
-                        <i class="bi bi-heart-fill"></i>
-                        <input type="submit" value="Quitar mg" class="boton">
-                      </div>
+                      <button class="boton" type="submit"><i class="bi bi-heart-fill"></i></button>
                     </form>
                   </div>
                 </div>
@@ -251,9 +246,92 @@
           @endforeach
         </div>
       </div>
-
-
     </div>
+  {{-- PERFIL --}}
+    <div class="tab-pane fade w-70" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+      {{-- perfil --}}
+      <div class="container rounded bg-white mt-5 mb-5">
+        {{-- if del usuario --}}
+        @foreach ($usuarios as $usuario)
+        @if(($usuario->usuario) == session('usuario'))
+        <div class="row">
+          {{-- primera columna --}}
+            <div class="columna1 col-md-4 border-right">
+              {{-- imagen usuario --}}
+                <div class="image d-flex flex-column align-items-center text-center p-3 py-5"> {{-- imagen --}}
+                  <button class="btn btn-secondary"> 
+                    <img class="rounded-circle mt-5" width="150px" src="img/{{$usuario->imagen}}">
+                  </button>
+                </div>
+                {{-- usuario y email --}}
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                  <span class="font-weight-bold">{{$usuario->usuario}}</span>
+                  <span class="text-black-50">{{$usuario->email}}</span>
+                </div>
+            </div>
+          {{-- segunda columna --}}
+            <div class="col-md-8 border-right">
+                <div class="p-3 py-5">
+                  {{-- formulario --}}
+                  <form action="">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Datos del perfil</h4>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6"><label class="labels">Nombre</label><input type="text" class="form-control" value="{{$usuario->name}}" name="name"></div>
+                        <div class="col-md-6"><label class="labels">Apellido</label><input type="text" class="form-control" value="{{$usuario->apellido}}" name="apellido"></div>
+                        <div class="col-md-12"><label class="labels">Imagen</label><input type="text" class="form-control" value="imagen" name="imagen"></div>
+                      </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12"><label class="labels">Teléfono</label><input type="text" class="form-control" value="{{$usuario->telefono}}" name="telefono"></div>
+                        <div class="col-md-12"><label class="labels">Ciudad</label>
+                          <select class="form-control" name="ciudad">
+                            {{-- @foreach ($ciudades as $ciudad)
+                              <option value="">{{$ciudad->nombre}}</option>
+                            @endforeach --}}
+                          </select>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-6"><label class="labels">Género</label>
+                          <select class="form-control" name="genero">
+                            <option value="">Hombre</option>
+                            <option value="">Mujer</option>
+                            <option value="">Otro</option>
+                          </select>
+                        </div>
+                        <div class="col-md-6"><label class="labels">Preferencia</label>
+                          <select class="form-control" name="preferencia">
+                            <option value="">Hombre</option>
+                            <option value="">Mujer</option>
+                            <option value="">Todo</option>
+                          </select>
+                        </div>
+                        <div class="col-md-12"><label class="labels">Hobbies</label>
+                            <select class="form-control" name="hobbie">
+                              {{-- @foreach ($hobbies as $hobbie)
+                                <option value="">{{$hobbie->nombre}}</option>
+                              @endforeach --}}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Modificar perfil</button></div>
+                  </form>
+                  </div>
+            </div>
+        </div>
+        @endif
+        @endforeach
+    </div>
+   
+    </div>
+    </div>
+    </div>
+    </main>
+    <!-- FOOTER -->
+    @yield('footer')
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
 </body>
 

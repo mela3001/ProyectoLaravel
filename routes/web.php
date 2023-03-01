@@ -20,15 +20,7 @@ use App\Http\Controllers\CursoController; //importado el controlador
 Route::get('/', HomeController::class) -> name('home'); 
 Route::post('/', [HomeController::class, 'store']) -> name('store');
 
-Route::get('adminUsu', [adminController::class, 'adminUsu']) -> name('adminUsu');
 
-Route::get('adminHobbie', [adminController::class, 'adminHobbie']) -> name('adminHobbie');
-Route::post('adminHobbie', [adminController::class, 'anadirHobbie']) -> name('anadirHobbie');
-
-Route::get('adminCiudad', [adminController::class, 'adminCiudad']) -> name('adminCiudad');
-Route::post('adminCiudad', [adminController::class, 'anadirCiudad']) -> name('anadirCiudad');
-
-Route::get('adminContacta', [adminController::class, 'adminContacta']) -> name('adminContacta');
 
 
 Route::get('registro', [adminController::class, 'registroHobbie']) -> name('registro');
@@ -36,3 +28,23 @@ Route::get('registro', [adminController::class, 'registroHobbie']) -> name('regi
 
 Route::get('inicio', [adminController::class, 'inicioPagina']) -> name('inicio');
 Route::post('darMg', [adminController::class, 'darMg']) -> name('darMg');
+
+/* ----------------- ADMIN -------------- */
+
+/* USUARIOS */
+Route::get('adminUsu', [adminController::class, 'adminUsu']) -> name('adminUsu');
+Route::get('adminUsu/{usuarioId}', [adminController::class, 'deleteUsu']) -> name('deleteUsu');
+
+/* HOBBIES */
+Route::get('adminHobbie', [adminController::class, 'adminHobbie']) -> name('adminHobbie');
+Route::post('adminHobbie', [adminController::class, 'anadirHobbie']) -> name('anadirHobbie');
+Route::get('adminHobbie/{hobbieId}', [adminController::class, 'deleteHobbie']) -> name('deleteHobbie');
+
+/* CIUDADES */
+Route::get('adminCiudad', [adminController::class, 'adminCiudad']) -> name('adminCiudad');
+Route::post('adminCiudad', [adminController::class, 'anadirCiudad']) -> name('anadirCiudad');
+Route::get('adminCiudad/{ciudadId}', [adminController::class, 'deleteCiudad']) -> name('deleteCiudad');
+
+/* CONTACTA */
+Route::get('adminContacta', [adminController::class, 'adminContacta']) -> name('adminContacta');
+Route::get('adminContacta/{contactaId}', [adminController::class, 'deleteContacta']) -> name('deleteContacta');

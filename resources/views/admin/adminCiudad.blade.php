@@ -76,8 +76,7 @@
                   <tr>
                       <td>{{$ciudad->id}}</td>
                       <td>{{$ciudad->nombre}}</td>
-                      <td>
-                      </td>
+                      <td><a href="{{route('deleteCiudad', $ciudad->id)}}" class="btn btn-outline-danger">Eliminar</a></td>
                   </tr>    
                @endforeach
                 </tbody>

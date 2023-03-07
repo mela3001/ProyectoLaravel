@@ -22,6 +22,7 @@
     <!-- HEAD -->
     @yield('header')
     <!-- MAIN -->
+
     <main>
         <!-- NAV -->
       <nav class="border-top  navbar navbar-expand-md bg-body-tertiary">
@@ -47,11 +48,22 @@
               <li>
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Iniciar Sesion</button>
               </li>
+              <li class="nav-item mt-2">
+                  <input type="checkbox" class="checkbox" id="checkbox">
+                  <label for="checkbox" class="label botonclarooscuro">
+                    <i class="bi bi-moon"></i>
+                    <i class="bi bi-sun-fill"></i>
+                    <div class='ball'>
+                  </label>
+              </li>
             </ul>
           </div>
         </div>
       </nav>
+     
       <!-- INICIO DE SESION -->
+
+
       <div class="modal fade" id="staticBackdrop"  data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
         <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -89,7 +101,9 @@
           
           <!-- PRINCIPAL -->
           
-            <form id="msform" action="#" method="get">
+            <form id="msform" action="{{route('nuevoUsuario')}}" method="POST">
+              @csrf
+              {{-- @method('PUT') --}}
                 <!-- Progreso -->
                 <ul id="progressbar" >
                   <li class="active" >Genero</li>
@@ -100,22 +114,22 @@
                 </ul>
 
                 <!-- GENERO -->
-                <fieldset>
+                <fieldset name="genero">
                   <h2 class="fs-title">Genero que te identifica</h2>
                   <div class="form-check d-flex justify-content-start p-4">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="femenino">
+                    <input name="genero" value="Mujer" class="form-check-input" type="radio" name="flexRadioDefault" id="Mujer">
                     <label class="form-check-label" for="femenino">
                       <img src="img/genero-femenino.png" alt="" class="ps-2" style="max-width: 30px;"> Femenino
                     </label>
                   </div>
                   <div class="form-check d-flex justify-content-start p-4">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="masculino" >
+                    <input name="genero" value="Hombre" class="form-check-input" type="radio" name="flexRadioDefault" id="Hombre" >
                     <label class="form-check-label" for="masculino">
                       <img src="img/genero-masculino.png" alt="" class="ps-2" style="max-width: 30px;"> Masculino
                     </label>
                   </div>
                   <div class="form-check d-flex justify-content-start p-4">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="otro" >
+                    <input name="genero" value="Otro" class="form-check-input" type="radio" name="flexRadioDefault" id="Otro" >
                     <label class="form-check-label" for="otro">
                       <img src="img/genero-fluido.png" alt="" class="ps-2" style="max-width: 30px;"> Otro
                     </label>
@@ -128,19 +142,19 @@
                 <fieldset>
                   <h2 class="fs-title">Prefiero</h2>
                   <div class="form-check d-flex justify-content-start p-4">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="hombre">
+                    <input name="preferencia" value="Hombre" class="form-check-input" type="radio" name="flexRadioDefault" id="Hombre">
                     <label class="form-check-label" for="hombre">
                       <img src="img/hombre.png" alt="" class="ps-2" style="max-width: 30px;"> Hombre
                     </label>
                   </div>
                   <div class="form-check d-flex justify-content-start p-4">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="mujer" >
+                    <input name="preferencia" value="Mujer" class="form-check-input" type="radio" name="flexRadioDefault" id="Mujer" >
                     <label class="form-check-label" for="mujer">
                       <img src="img/mujer.png" alt="" class="ps-2" style="max-width: 30px;"> Mujer
                     </label>
                   </div>
                   <div class="form-check d-flex justify-content-start p-4">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="todo" >
+                    <input name="preferencia" value="Todo" class="form-check-input" type="radio" name="flexRadioDefault" id="Todo" >
                     <label class="form-check-label" for="todo">
                       <img src="img/orgullo.png" alt="" class="ps-2" style="max-width: 30px;"> Todo
                     </label>
@@ -156,7 +170,7 @@
                   <div class="row p-3">
                   @foreach ($hobbies as $hobbie)
                     <div class="col-6 d-flex justify-content-start ">
-                      <label><input type="checkbox" id="{{$hobbie->nombre}}" value="{{$hobbie->nombre}}"> {{$hobbie->nombre}}</label><br>
+                        <label><input name="hobbie" type="checkbox" id="{{$hobbie->nombre}}" value="{{$hobbie->nombre}}"> {{$hobbie->nombre}}</label><br>
                     </div>
                   @endforeach
                   </div>
@@ -167,15 +181,15 @@
                 <!-- DATOS PERSONALES -->
                 <fieldset>
                   <h2 class="fs-title justify-content-center">Datos personales</h2>
-                  <input type="text" name="name" placeholder="Nombre" class="datos">
-                  <input type="text" name="apellidos" placeholder="Apellidos" class="datos">
-                  <input type="number" name="telefono" placeholder="Telefono" class="datos">
+                  <input type="text" name="nombre" placeholder="Nombre" class="datos" required>
+                  <input type="text" name="apellido" placeholder="Apellidos" class="datos" required>
+                  <input type="number" name="telefono" placeholder="Telefono" class="datos" required>
                   <div class="row d-flex align-items-center">
                     <div class="col-6 d-flex flex-colum justify-content-center align-items-center">
                       <label >Fecha Nacimiento</label>
                     </div>
                     <div class="col-6 d-flex justify-content-center align-items-center">
-                      <input type="date" name="fecha" class="datos">
+                      <input type="date" name="fecha" class="datos" required>
                     </div>
                   </div>
                   <div class="input-group mb-3">
@@ -183,7 +197,7 @@
                     <select class="form-select" id="inputGroupSelect01">
                       <!-- select ciudades -->
                       @foreach ($ciudades as $ciudad)
-                        <option value="{{$ciudad->nombre}}">{{$ciudad->nombre}}</option>
+                        <option name="ciudad" value="{{$ciudad->nombre}}">{{$ciudad->nombre}}</option>
                       @endforeach
                     </select>
                   </div>
@@ -192,8 +206,9 @@
                 </fieldset>
                 <fieldset>
                   <h2 class="fs-title justify-content-center">Usuario</h2>
-                  <input type="text" name="usuario" placeholder="usuario" class="datos">
-                  <input type="text" name="contraseña" placeholder="contraseña" class="datos">
+                  <input type="text" name="email" placeholder="email" class="datos" required>
+                  <input type="text" name="usuario" placeholder="usuario" class="datos" required>
+                  <input type="password" name="password" placeholder="contraseña" class="datos" required>
                   <input type="button" name="previous" class="previous action-button" value="Previous">
                   <input type="submit" class="submit action-button" target="_top" name="registro" value="Registrarse">
                 </fieldset>
@@ -233,7 +248,7 @@
     
     </footer>
 
-
+<script src="js/inicio.js"></script>
 <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>

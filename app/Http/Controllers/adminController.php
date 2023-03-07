@@ -6,7 +6,8 @@ use App\Models\Hobbie;
 use App\Models\Ciudad;
 use App\Models\Contacta;
 use App\Models\Megusta;
-
+use App\Models\Usuariohobbie;
+use Illuminate\Console\View\Components\Alert;
 use Illuminate\Http\Request;
 class adminController extends Controller
 {
@@ -33,6 +34,9 @@ class adminController extends Controller
 
         $usuarios = User::all();
         $megustas = Megusta::all();
+        $ciudades = Ciudad::all();
+        $hobbies = Hobbie::all();
+        $hobbieUsuario = Usuariohobbie::all();
 
         foreach($usuarios as $usuario){
             
@@ -59,9 +63,15 @@ class adminController extends Controller
 
         
         if($loginCorrecto){
+
+
+
             $data = [
                 'megustas' => $megustas,
                 'usuarios' => $usuarios,
+                'ciudades' => $ciudades,
+                'hobbies' => $hobbies,
+                'hobbieUsuario'=> $hobbieUsuario,
             ];
     
             return view('inicio' , $data);
@@ -73,6 +83,103 @@ class adminController extends Controller
         }
        
     }
+
+
+/* MODIFICAR USUARIO */
+
+    public function modificarUsuario(Request $request){
+        $usu = $request->usuario;
+        $nombre = $request->name;
+        $apellido = $request->apellido;
+        $telefono = $request->telefono;
+        $ciudad = $request->ciudad;
+        $genero = $request->genero;
+        $preferencia = $request->preferencia;
+
+        User::where('usuario', $usu)
+        ->update(['name'=>$nombre, 'apellido'=>$apellido, 'telefono'=>$telefono, 'ciudad'=>$ciudad,'genero'=>$genero,'preferencia'=>$preferencia]);
+
+        return redirect('inicio');
+
+    }
+
+    public function modificarImg(Request $request){
+
+        $usuarios = User::all();
+        $megustas = Megusta::all();
+        $ciudades = Ciudad::all();
+        $hobbies = Hobbie::all();
+        $hobbieUsuario = Usuariohobbie::all();
+
+        $data = [
+            'megustas' => $megustas,
+            'usuarios' => $usuarios,
+            'ciudades' => $ciudades,
+            'hobbies' => $hobbies,
+            'hobbieUsuario'=> $hobbieUsuario,
+        ];
+
+        $ruta = public_path('img/');
+        $imagen = $request->file('imagen');
+        $nombreImagen=$imagen->hashName();
+        $imagen->move($ruta, $nombreImagen);
+
+        $usu = $request->usuario;
+        
+        User::where('usuario', $usu)
+            ->update(['imagen'=>$nombreImagen]);
+
+        return back();
+
+    }
+
+/* ------------REGISTRO----------------------------------------------------- */
+
+public function nuevoUsuario(Request $request){
+    // print_r('hola');
+
+    $usuarioNuevo = new User();
+
+    $usuarioNuevo->usuario = $request->usuario;
+    $usuarioNuevo->password = $request->password;
+    $usuarioNuevo->name = $request->nombre;
+    $usuarioNuevo->apellido = $request->apellido;
+    $usuarioNuevo->telefono = $request->telefono;
+    $usuarioNuevo->ciudad = $request->ciudad;
+    $usuarioNuevo->genero = $request->genero;
+    if($request->genero == 'Hombre'){
+        $usuarioNuevo->imagen = 'usuarioChico.png';
+    }elseif($request->genero == 'Mujer'){
+        $usuarioNuevo->imagen = 'usuarioChica.png';
+    }else{
+        $usuarioNuevo->imagen = 'usuarioOtro.png';
+    }
+    $usuarioNuevo->preferencia = $request->preferencia;
+    // $usuarioNuevo->hobbie = $request->hobbie;
+    $fecha =$request->fecha;
+    $usuarioNuevo->fecha_nac = $fecha;
+    $year=substr($fecha, 0, -3);
+    $usuarioNuevo->edad = 2023-$year;
+    $usuarioNuevo->email = $request->email;
+
+    // print_r($request->usuario);
+    // print_r($request->password);
+    // print_r($request->nombre);
+    // print_r($request->apellido);
+    // print_r($request->telefono);
+    // print_r($request->ciudad);
+    // print_r($request->genero);
+    // print_r($request->imagen);
+    // print_r($request->preferencia);
+    // print_r($request->fecha);
+    // print_r($year);
+    // print_r($request->email);
+
+    $usuarioNuevo->save();
+    return redirect('inicio');
+
+}
+
 
 /* -------------PAGINA DE ADMINISTRADOR -------------------- */
 
@@ -193,15 +300,25 @@ class adminController extends Controller
         if($existe){
 
             $usuarios = User::all();
+            $ciudades = Ciudad::all();
+            $hobbies = Hobbie::all();
+            $hobbieUsuario = Usuariohobbie::all();
 
             $data = [
                 'megustas' => $megustas,
                 'usuarios' => $usuarios,
+                'hobbies' => $hobbies,
+                'ciudades' => $ciudades,
+                'hobbieUsuario' => $hobbieUsuario,
             ];
     
             return view('inicio' , $data);
 
         }else{
+            $ciudades = Ciudad::all();
+            $hobbies = Hobbie::all();
+            $hobbieUsuario = Usuariohobbie::all();
+
             $mg = new Megusta();
             $mg->usuarioDaMg = $request->usuarioDaMg;
             $mg->usuarioRecibeMg = $request->usuarioRecibeMg;
@@ -212,6 +329,9 @@ class adminController extends Controller
             $data = [
                 'megustas' => $megustas,
                 'usuarios' => $usuarios,
+                'hobbies' => $hobbies,
+                'ciudades' => $ciudades,
+                'hobbieUsuario' => $hobbieUsuario,
             ];
     
             return view('inicio' , $data);

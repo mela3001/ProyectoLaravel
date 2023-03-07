@@ -27,10 +27,19 @@
               </li>
               <li>
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Iniciar Sesion</button>
+              
               </li>
             </ul>
           </div>
      </div>
+     <div>
+      <input type="checkbox" class="checkbox" id="checkbox">
+      <label for="checkbox" class="label">
+        <i class="bi bi-moon"></i>
+        <i class="bi bi-sun-fill"></i>
+        <div class='ball'>
+      </label>
+  </div>
 </nav>
 @endsection
 

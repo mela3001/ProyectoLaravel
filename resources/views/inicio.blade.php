@@ -41,6 +41,14 @@
       <button class="nav-link active col-3" id="color nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Inicio</button>
       <button class="nav-link col-3" id="color nav-gusto-tab" data-bs-toggle="tab" data-bs-target="#nav-gusto" type="button" role="tab" aria-controls="nav-gusto" aria-selected="false"><i class="bi bi-suit-heart"></i> Galeria de Me gustas</button>
       <button class="nav-link col-3" id="color nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Perfil</button>
+      <div>
+        <input type="checkbox" class="checkbox" id="checkbox">
+        <label for="checkbox" class="label botonclarooscuro">
+          <i class="bi bi-moon"></i>
+          <i class="bi bi-sun-fill"></i>
+          <div class='ball'>
+        </label>
+    </div>
     </div>
   </nav>
   <main>
@@ -150,9 +158,9 @@
     <div class="tab-pane fade w-70" id="nav-gusto" role="tabpanel" aria-labelledby="nav-gusto-tab">
       <nav class="container-fluid p-3 row d-flex w-100 justify-content-center">
         <div class="nav nav-tabs w-100 justify-content-center " id="nav-tab" role="tablist">
-          <button class="text-white nav-link col active" id="color nav-megusta-tab" data-bs-toggle="tab" data-bs-target="#nav-megusta" type="button" role="tab" aria-controls="nav-megusta" aria-selected="false">ME GUSTA</button>
-          <button class="text-white nav-link col" id="color nav-legusto-tab" data-bs-toggle="tab" data-bs-target="#nav-legusto" type="button" role="tab" aria-controls="nav-legusto" aria-selected="false">LE GUSTO</button>
-          <button class="text-white nav-link col" id="color nav-compatible-tab" data-bs-toggle="tab" data-bs-target="#nav-compatible" type="button" role="tab" aria-controls="nav-compatible" aria-selected="false">RESULTADOS COMPATIBLES</button>
+          <button class="nav-link col active" id="color nav-megusta-tab" data-bs-toggle="tab" data-bs-target="#nav-megusta" type="button" role="tab" aria-controls="nav-megusta" aria-selected="false">ME GUSTA</button>
+          <button class="nav-link col" id="color nav-legusto-tab" data-bs-toggle="tab" data-bs-target="#nav-legusto" type="button" role="tab" aria-controls="nav-legusto" aria-selected="false">LE GUSTO</button>
+          <button class="nav-link col" id="color nav-compatible-tab" data-bs-toggle="tab" data-bs-target="#nav-compatible" type="button" role="tab" aria-controls="nav-compatible" aria-selected="false">RESULTADOS COMPATIBLES</button>
         </div>
       </nav>
       <!-- me gustan -->
@@ -256,14 +264,25 @@
         @if(($usuario->usuario) == session('usuario'))
         <div class="row">
           {{-- primera columna --}}
-            <div class="columna1 
-            col-md-4 border-right">
+            <div class="columna1 col-md-5 border-right">
               {{-- imagen usuario --}}
                 <div class="image d-flex flex-column align-items-center text-center p-3 py-5"> {{-- imagen --}}
                   <button class="btn"> 
                     <img class="rounded-circle mt-5" width="150px" src="img/{{$usuario->imagen}}">
                   </button>
                 </div>
+                {{-- MODIFICAR IMAGEN --}}
+                <form action="{{route('modificarImg')}}" method="POST" enctype="multipart/form-data">
+                  @csrf
+                  @method('PUT') 
+                    <div class="col-md-6 divImg">
+                      <label class="labels mt-3">Cambiar imagen de perfil</label><br>
+                      <input type="file" name="imagen">
+                      <input type="hidden" name="usuario" value="{{session('usuario')}}">
+                      <button class="btn btn-primary profile-button" type="submit">Modificar imagen</button>
+                    </div>
+                </form>
+                
                 {{-- usuario y email --}}
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                   <h2 class="font-weight-bold">{{$usuario->usuario}}</h2>
@@ -271,34 +290,37 @@
                 </div>
             </div>
           {{-- segunda columna --}}
-            <div class="col-md-8 border-right">
+            <div class="col-md-7 border-right">
                 <div class="p-3 py-5">
                   {{-- formulario --}}
-                  <form action="">
+                  <form action="{{-- {{route('modificarUsuario')}} --}}" method="POST">
+                    @csrf
+                    @method('PUT')
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h4 class="text-right">Datos del perfil</h4>
                     </div>
                     <div class="row mt-2">
+                        <input type="hidden" name="usuario" value="{{session('usuario')}}">
                         <div class="col-md-6"><label class="labels">Nombre</label><input type="text" class="form-control" value="{{$usuario->name}}" name="name"></div>
                         <div class="col-md-6"><label class="labels">Apellido</label><input type="text" class="form-control" value="{{$usuario->apellido}}" name="apellido"></div>
-                        <div class="col-md-12"><label class="labels">Imagen</label><input type="text" class="form-control" value="imagen" name="imagen"></div>
+                        
                       </div>
                     <div class="row mt-3">
                         <div class="col-md-12"><label class="labels">Teléfono</label><input type="text" class="form-control" value="{{$usuario->telefono}}" name="telefono"></div>
                         <div class="col-md-12"><label class="labels">Ciudad</label>
                           <select class="form-control" name="ciudad">
-                            {{-- @foreach ($ciudades as $ciudad)
+                            @foreach ($ciudades as $ciudad)
                               <option value="">{{$ciudad->nombre}}</option>
-                            @endforeach --}}
+                            @endforeach
                           </select>
                         </div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-6"><label class="labels">Género</label>
                           <select class="form-control" name="genero">
-                            <option value="">Hombre</option>
-                            <option value="">Mujer</option>
-                            <option value="">Otro</option>
+                              <option value="">Hombre</option>
+                              <option value="">Mujer</option>
+                              <option value="">Otro</option>
                           </select>
                         </div>
                         <div class="col-md-6"><label class="labels">Preferencia</label>
@@ -309,14 +331,18 @@
                           </select>
                         </div>
                         <div class="col-md-12"><label class="labels">Hobbies</label>
-                            <select class="form-control" name="hobbie">
-                              {{-- @foreach ($hobbies as $hobbie)
-                                <option value="">{{$hobbie->nombre}}</option>
-                              @endforeach --}}
-                            </select>
+                          @foreach ($hobbieUsuario as $hobbieUsu)
+                            <div class="col-6 d-flex justify-content-start " name="hobbie">
+                              @if(($hobbieUsu->usuario) == session('usuario')) 
+                                <li value="{{$hobbieUsu->hobbie}}"> {{$hobbieUsu->hobbie}}</li><br>
+                              @endif 
+                            </div>
+                           @endforeach 
                         </div>
                     </div>
-                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Modificar perfil</button></div>
+                    <div class="mt-5 text-center">
+                      <button class="btn btn-primary profile-button" type="submit">Modificar perfil</button>
+                    </div>
                   </form>
                   </div>
             </div>
@@ -332,7 +358,7 @@
     <!-- FOOTER -->
     @yield('footer')
 
-
+    <script src="js/inicio.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
 </body>
 

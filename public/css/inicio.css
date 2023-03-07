@@ -32,7 +32,8 @@
     transition: all 0.5s;
   }
   .curso:hover{
-    transform: scale(1.05)
+    transform: scale(1.05);
+    background-color: #fac8cc;
   }
   .cursos .curso .imagen-curso {
     width: 100%;
@@ -61,7 +62,7 @@
     font-size: 1.2rem;
   }
   .cursos .info-curso .boton {
-    background-color: #741d51;
+    background-color: #ad000c;
     color: #ffffff;
     border: 0;
     border-radius: 1rem;
@@ -90,10 +91,10 @@
   }
 
   /* tab */
-  .tab-content{
+  /* .tab-content{ */
     /* background: linear-gradient(90deg, rgba(255,1,62,0.8016456582633054) 0%, rgba(255,119,0,0.7988445378151261) 89%, rgba(255,205,0,0.8044467787114846) 100%); */
   
-  }
+  /* } */
 
   /* .nav-tabs .nav-link.active{
     color: rgb(235, 85, 85);
@@ -164,7 +165,7 @@
 /* perfil imagen */
 
 .columna1 {
-  width: 350px;
+  width: 450px;
   background-color: #efefef;
   border-radius: 0.5rem 0 0 0.5rem;
   border: none;
@@ -178,4 +179,76 @@
 
 .columna1:hover .image img {
   transform: scale(1.5)
+}
+
+/* .divImg{
+  width: 30%;
+} */
+
+#color{
+  color: #220918;
+}
+
+
+
+/* -----------------BOTON COLOR/OSCURO---------------- */
+
+/* * {
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  transition: background 0.2s linear;
+} */
+body.dark {
+  background-color: #292c35;
+}
+.checkbox {
+  opacity: 0;
+  position: absolute;
+}
+
+.label {
+  width: 50px;
+  height: 26px;
+  background-color:#080808;
+  display: flex;
+  border-radius:50px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  position: relative;
+  transform: scale(1.5);
+}
+
+/* .botonclarooscuro.dark{
+  background-color:#ffffff;
+} */
+
+.ball {
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  border-radius: 50%;
+  transition: transform 0.2s linear;
+}
+
+/*  target the elemenent after the label*/
+.checkbox:checked + .label .ball{
+  transform: translateX(24px);
+}
+
+.bi-moon{
+  color: pink;
+}
+
+.bi-sun-fill{
+  color: yellow;
 }

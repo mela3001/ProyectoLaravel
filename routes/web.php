@@ -17,6 +17,7 @@ use App\Http\Controllers\CursoController; //importado el controlador
 |
 */
 
+
 Route::get('/', HomeController::class) -> name('home'); 
 Route::post('/', [HomeController::class, 'store']) -> name('store');
 
@@ -28,6 +29,15 @@ Route::get('registro', [adminController::class, 'registroHobbie']) -> name('regi
 
 Route::get('inicio', [adminController::class, 'inicioPagina']) -> name('inicio');
 Route::post('darMg', [adminController::class, 'darMg']) -> name('darMg');
+/* USUARIOS */
+// Route::put('inicio', [adminController::class, 'modificarUsuario']) -> name('modificarUsuario');
+Route::put('inicio', [adminController::class, 'modificarImg']) -> name('modificarImg');
+
+
+/* -----------------REGISTRO---------------------------- */
+Route::post('inicio', [adminController::class, 'nuevoUsuario']) -> name('nuevoUsuario');
+
+
 
 /* ----------------- ADMIN -------------- */
 

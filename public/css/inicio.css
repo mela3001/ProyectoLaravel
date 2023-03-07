@@ -94,14 +94,17 @@
   }
 
 
-
-
-
   .curso__imagen{
     border-radius: 50%;
     width: 10rem;
     overflow: hidden;
     margin-top: 10px;
+  }
+  .usuario__imagen{
+    border-radius: 50%;
+    width: 2rem;
+    overflow: hidden;
+    margin: 10px;
   }
 
   /* tab */

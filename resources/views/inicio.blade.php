@@ -28,7 +28,7 @@
       <img src="img/logo.png" alt="">
     </div>
     <div class="col d-flex justify-content-center align-items-center d-none d-sm-none d-md-block">
-      <h5 class=" d-flex justify-content-center align-items-center"><i class="bi bi-person-circle"></i>{{session('usuario')}}</h5>
+      <h5 class=" d-flex justify-content-center align-items-center"><img class="usuario__imagen" src="/img/{{session('usuarioImg')}}" alt="usuario"></i>{{session('usuario')}}</h5>
     </div>
     <div class="col d-flex justify-content-center align-items-center">
       <form action="">

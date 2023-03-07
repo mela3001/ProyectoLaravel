@@ -51,6 +51,7 @@ class adminController extends Controller
                             session(['usuario' => $usuario -> usuario] );
                             session(['usuarioId' => $usuario -> id] );
                             session(['usuarioCiudad' => $usuario -> ciudad]);
+                            session(['usuarioImg' => $usuario -> imagen]);
                         }
                     }else{
                         $loginCorrecto=true;
@@ -59,6 +60,7 @@ class adminController extends Controller
                         session( ['preferenciaUsuarioActivo' => $usuario -> preferencia]);
                         session( ['generoUsuarioActivo' => $usuario -> genero]);
                         session(['usuarioCiudad' => $usuario -> ciudad]);
+                        session(['usuarioImg' => $usuario -> imagen]);
                     }
                     
                 } 

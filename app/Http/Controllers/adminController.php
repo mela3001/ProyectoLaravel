@@ -11,18 +11,20 @@ use Illuminate\Console\View\Components\Alert;
 use Illuminate\Http\Request;
 class adminController extends Controller
 {
-    public function registroHobbie(){
-        $hobbies = Hobbie::all();
-        $ciudades = Ciudad::all();
 
-        $data = [
-            'hobbies' => $hobbies,
-            'ciudades' => $ciudades,
-        ];
+    
+/* HOME */
 
-        return view('registro' , $data);
+    public function store(Request $request){
+        $usuario = new Contacta();
+        $usuario->name = $request->name;
+        $usuario->email = $request->email;
+        $usuario->telefono = $request->phone;
+        $usuario->mensaje = $request->mensaje;
+        $usuario->save();
+        return back();
+    
     }
-
 
 /* CONTROLAR LOS INICIOS DE SESION */
     public function inicioPagina(Request $request){
@@ -134,6 +136,18 @@ class adminController extends Controller
     }
 
 /* ------------REGISTRO----------------------------------------------------- */
+
+public function registroHobbie(){
+    $hobbies = Hobbie::all();
+    $ciudades = Ciudad::all();
+
+    $data = [
+        'hobbies' => $hobbies,
+        'ciudades' => $ciudades,
+    ];
+
+    return view('registro' , $data);
+}
 
 public function nuevoUsuario(Request $request){
     // print_r('hola');
@@ -337,5 +351,31 @@ public function nuevoUsuario(Request $request){
             return view('inicio' , $data);
         }
         
+     }
+
+     public function quitarMg(Request $request){
+        $usuarioDaMg = $request->usuarioDaMg;
+        $usuarioRecibeMg = $request->usuarioRecibeMg;
+        $megustas = Megusta::all();
+
+
+        Megusta::where('usuarioDaMg', $usuarioDaMg)
+            ->where('usuarioRecibeMg', $usuarioRecibeMg)
+            ->delete();
+
+        $megustas = Megusta::all();
+        $usuarios = User::all();
+        $ciudades = Ciudad::all();
+        $hobbies = Hobbie::all();
+        $hobbieUsuario = Usuariohobbie::all();
+        $data = [
+            'megustas' => $megustas,
+            'usuarios' => $usuarios,
+            'hobbies' => $hobbies,
+            'ciudades' => $ciudades,
+            'hobbieUsuario' => $hobbieUsuario,
+        ];
+    
+        return view('inicio' , $data);
      }
 }

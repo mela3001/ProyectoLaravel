@@ -138,13 +138,13 @@
                   </div>
                   <div class="dragArea row">
                       <div class="col-lg-6 col-md-12 col-sm-12 form-group mb-3" data-for="Nombre">
-                          <input type="text" name="name" placeholder="Nombre" data-form-field="Nombre" class="form-control display-7" value="name" id="name">
+                          <input type="text" name="name" placeholder="Nombre" data-form-field="Nombre" class="form-control display-7"id="name">
                       </div>
                       <div data-for="email" class="col-lg-6 col-md-12 col-sm-12 form-group mb-3">
-                          <input type="email" name="email" placeholder="Email" data-form-field="email" class="form-control display-7" value="email" id="email">
+                          <input type="email" name="email" placeholder="Email" data-form-field="email" class="form-control display-7" id="email">
                       </div>
                       <div data-for="phone" class="col-lg-6 col-md-12 col-sm-12 form-group mb-3">
-                          <input type="tel" name="phone" placeholder="Telefono" data-form-field="phone" class="form-control display-7" value="phone" id="phone">
+                          <input type="tel" name="phone" placeholder="Telefono" data-form-field="phone" class="form-control display-7" id="phone">
                       </div>
                       <div data-for="message" class="col-lg-12 col-md-12 col-sm-12 form-group mb-3">
                           <textarea  name ="mensaje" placeholder="Mensaje" data-form-field="message" class="form-control display-7" id="mensaje"></textarea>

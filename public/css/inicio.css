@@ -83,6 +83,20 @@
      border: 2px solid #741d51;
   } */
 
+  .iconodadomg{
+    color: #ad000c;
+  }
+  
+  
+  .cursos .info-curso .botondadomg{
+    background-color: white;
+    border:1px solid #ad000c;
+  }
+
+
+
+
+
   .curso__imagen{
     border-radius: 50%;
     width: 10rem;

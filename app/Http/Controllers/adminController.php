@@ -50,6 +50,7 @@ class adminController extends Controller
                             session()->forget('usuario');
                             session(['usuario' => $usuario -> usuario] );
                             session(['usuarioId' => $usuario -> id] );
+                            session(['usuarioCiudad' => $usuario -> ciudad]);
                         }
                     }else{
                         $loginCorrecto=true;
@@ -57,6 +58,7 @@ class adminController extends Controller
                         session(['usuario' => $usuario -> usuario] );
                         session( ['preferenciaUsuarioActivo' => $usuario -> preferencia]);
                         session( ['generoUsuarioActivo' => $usuario -> genero]);
+                        session(['usuarioCiudad' => $usuario -> ciudad]);
                     }
                     
                 } 
@@ -97,30 +99,30 @@ class adminController extends Controller
         $ciudad = $request->ciudad;
         $genero = $request->genero;
         $preferencia = $request->preferencia;
-
+        session(['usuarioCiudad' => $request -> ciudad]);
         User::where('usuario', $usu)
         ->update(['name'=>$nombre, 'apellido'=>$apellido, 'telefono'=>$telefono, 'ciudad'=>$ciudad,'genero'=>$genero,'preferencia'=>$preferencia]);
 
-        return redirect('inicio');
+
+            $megustas = Megusta::all();
+            $usuarios = User::all();
+            $ciudades = Ciudad::all();
+            $hobbies = Hobbie::all();
+            $hobbieUsuario = Usuariohobbie::all();
+
+            $data = [
+                'megustas' => $megustas,
+                'usuarios' => $usuarios,
+                'hobbies' => $hobbies,
+                'ciudades' => $ciudades,
+                'hobbieUsuario' => $hobbieUsuario,
+            ];
+    
+            return view('inicio' , $data);
 
     }
 
     public function modificarImg(Request $request){
-
-        $usuarios = User::all();
-        $megustas = Megusta::all();
-        $ciudades = Ciudad::all();
-        $hobbies = Hobbie::all();
-        $hobbieUsuario = Usuariohobbie::all();
-
-        $data = [
-            'megustas' => $megustas,
-            'usuarios' => $usuarios,
-            'ciudades' => $ciudades,
-            'hobbies' => $hobbies,
-            'hobbieUsuario'=> $hobbieUsuario,
-        ];
-
         $ruta = public_path('img/');
         $imagen = $request->file('imagen');
         $nombreImagen=$imagen->hashName();
@@ -131,9 +133,89 @@ class adminController extends Controller
         User::where('usuario', $usu)
             ->update(['imagen'=>$nombreImagen]);
 
-        return back();
+
+            $megustas = Megusta::all();
+            $usuarios = User::all();
+            $megustas = Megusta::all();
+            $ciudades = Ciudad::all();
+            $hobbies = Hobbie::all();
+            $hobbieUsuario = Usuariohobbie::all();
+    
+            $data = [
+                'megustas' => $megustas,
+                'usuarios' => $usuarios,
+                'ciudades' => $ciudades,
+                'hobbies' => $hobbies,
+                'hobbieUsuario'=> $hobbieUsuario,
+            ];
+
+
+        return view('inicio', $data);
 
     }
+
+    public function nuevoHobbieUsuario(Request $request){
+        $usuario = $request->usuario;
+        $hobbie = $request->hobbie;
+        $existe=false;
+
+        $usuariohobbies = Usuariohobbie::all();
+        foreach($usuariohobbies as $hobbieUsu){
+            if(($hobbieUsu -> usuario) == $usuario){
+                if(($hobbieUsu -> hobbie) == $hobbie ){
+                    $existe=true;
+                } 
+            }
+        }
+
+        if($existe){
+            $megustas = Megusta::all();
+            $usuarios = User::all();
+            $ciudades = Ciudad::all();
+            $hobbies = Hobbie::all();
+            $hobbieUsuario = Usuariohobbie::all();
+
+            $data = [
+                'megustas' => $megustas,
+                'usuarios' => $usuarios,
+                'hobbies' => $hobbies,
+                'ciudades' => $ciudades,
+                'hobbieUsuario' => $hobbieUsuario,
+            ];
+    
+            return view('inicio' , $data);
+
+        }else{
+            
+            $nuevoHobbie = new Usuariohobbie();
+            $nuevoHobbie->usuario = $usuario;
+            $nuevoHobbie->hobbie = $hobbie;
+            $nuevoHobbie -> save();
+
+
+
+
+
+            $megustas = Megusta::all();
+            $usuarios = User::all();
+            $ciudades = Ciudad::all();
+            $hobbies = Hobbie::all();
+            $hobbieUsuario = Usuariohobbie::all();
+
+            $data = [
+                'megustas' => $megustas,
+                'usuarios' => $usuarios,
+                'hobbies' => $hobbies,
+                'ciudades' => $ciudades,
+                'hobbieUsuario' => $hobbieUsuario,
+            ];
+    
+            return view('inicio' , $data);
+        }
+        
+     }
+
+
 
 /* ------------REGISTRO----------------------------------------------------- */
 
@@ -162,32 +244,20 @@ public function nuevoUsuario(Request $request){
     $usuarioNuevo->ciudad = $request->ciudad;
     $usuarioNuevo->genero = $request->genero;
     if($request->genero == 'Hombre'){
-        $usuarioNuevo->imagen = 'usuarioChico.png';
+        $usuarioNuevo->imagen =  'usuarioChico.png';/* $usuarioNuevo->imagen = */
     }elseif($request->genero == 'Mujer'){
         $usuarioNuevo->imagen = 'usuarioChica.png';
     }else{
-        $usuarioNuevo->imagen = 'usuarioOtro.png';
+        $usuarioNuevo->imagen =  'usuarioOtro.png';
     }
     $usuarioNuevo->preferencia = $request->preferencia;
-    // $usuarioNuevo->hobbie = $request->hobbie;
+
+  
     $fecha =$request->fecha;
     $usuarioNuevo->fecha_nac = $fecha;
-    $year=substr($fecha, 0, -3);
-    $usuarioNuevo->edad = 2023-$year;
+    $year=substr($fecha, 0, -6);
+    $usuarioNuevo->edad = 2023-intval($year);
     $usuarioNuevo->email = $request->email;
-
-    // print_r($request->usuario);
-    // print_r($request->password);
-    // print_r($request->nombre);
-    // print_r($request->apellido);
-    // print_r($request->telefono);
-    // print_r($request->ciudad);
-    // print_r($request->genero);
-    // print_r($request->imagen);
-    // print_r($request->preferencia);
-    // print_r($request->fecha);
-    // print_r($year);
-    // print_r($request->email);
 
     $usuarioNuevo->save();
     return redirect('inicio');

@@ -32,12 +32,12 @@ Route::post('quitarMg', [adminController::class, 'quitarMg']) -> name('quitarMg'
 
 
 /* ----------------MODIFICAR PERFIL------------------------- */
-// Route::put('inicio', [adminController::class, 'modificarUsuario']) -> name('modificarUsuario');
+Route::put('modificarUsuario', [adminController::class, 'modificarUsuario']) -> name('modificarUsuario');
 Route::put('inicio', [adminController::class, 'modificarImg']) -> name('modificarImg');
-
+Route::post('nuevoHobbieUsuario', [adminController::class, 'nuevoHobbieUsuario']) -> name('nuevoHobbieUsuario');
 
 /* -----------------REGISTRO---------------------------- */
-Route::post('inicio', [adminController::class, 'nuevoUsuario']) -> name('nuevoUsuario');
+Route::post('nuevoUsuario', [adminController::class, 'nuevoUsuario']) -> name('nuevoUsuario');
 
 
 

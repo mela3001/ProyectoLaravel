@@ -18,6 +18,7 @@
 </head>
 
 <body>
+
   {{-- Añade la plantilla --}}
   @include('layouts.plantillas')
 
@@ -294,7 +295,7 @@
             <div class="col-md-7 border-right">
                 <div class="p-3 py-5">
                   {{-- formulario --}}
-                  <form action="{{-- {{route('modificarUsuario')}} --}}" method="POST">
+                  <form action="{{route('modificarUsuario')}}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="d-flex justify-content-between align-items-center mb-3">
@@ -309,9 +310,11 @@
                     <div class="row mt-3">
                         <div class="col-md-12"><label class="labels">Teléfono</label><input type="text" class="form-control" value="{{$usuario->telefono}}" name="telefono"></div>
                         <div class="col-md-12"><label class="labels">Ciudad</label>
+                          
                           <select class="form-control" name="ciudad">
+                            <option value="{{session('usuarioCiudad')}}">{{session('usuarioCiudad')}}</option>
                             @foreach ($ciudades as $ciudad)
-                              <option value="">{{$ciudad->nombre}}</option>
+                              <option value="{{$ciudad->nombre}}">{{$ciudad->nombre}}</option>
                             @endforeach
                           </select>
                         </div>
@@ -319,32 +322,51 @@
                     <div class="row mt-3">
                         <div class="col-md-6"><label class="labels">Género</label>
                           <select class="form-control" name="genero">
-                              <option value="">Hombre</option>
-                              <option value="">Mujer</option>
-                              <option value="">Otro</option>
+                              <option value="Hombre">Hombre</option>
+                              <option value="Mujer">Mujer</option>
+                              <option value="Otro">Otro</option>
                           </select>
                         </div>
                         <div class="col-md-6"><label class="labels">Preferencia</label>
                           <select class="form-control" name="preferencia">
-                            <option value="">Hombre</option>
-                            <option value="">Mujer</option>
-                            <option value="">Todo</option>
+                            <option value="Hombre">Hombre</option>
+                            <option value="Mujer">Mujer</option>
+                            <option value="Todo">Todo</option>
                           </select>
-                        </div>
-                        <div class="col-md-12"><label class="labels">Hobbies</label>
-                          @foreach ($hobbieUsuario as $hobbieUsu)
-                            <div class="col-6 d-flex justify-content-start " name="hobbie">
-                              @if(($hobbieUsu->usuario) == session('usuario')) 
-                                <li value="{{$hobbieUsu->hobbie}}"> {{$hobbieUsu->hobbie}}</li><br>
-                              @endif 
-                            </div>
-                           @endforeach 
                         </div>
                     </div>
                     <div class="mt-5 text-center">
                       <button class="btn btn-primary profile-button" type="submit">Modificar perfil</button>
                     </div>
                   </form>
+                  <hr>
+                  <form action="{{route('nuevoHobbieUsuario')}}" method="POST">
+                    @csrf
+                    <input type="hidden" value="{{session('usuario')}}" name="usuario">
+                    <div class="row d-flex justify-content-center align-items-center mt-4">
+                      <label class="labels">Añadir hobbies</label>
+                      <div class="col-6">
+                          <select class="form-control" name="hobbie">
+                            @foreach ($hobbies as $hobbie)
+                              <option value="{{$hobbie->nombre}}">{{$hobbie->nombre}}</option>
+                            @endforeach
+                          </select>
+                      </div>
+                      <div class="col-6">
+                        <button class="btn btn-primary profile-button" type="submit">Añadir Hobbie</button>
+                      </div>
+                    </div>
+                  </form>
+                    <div class="col-md-12 mt-3"><label class="labels">Tus hobbies</label>
+                      @foreach ($hobbieUsuario as $hobbieUsu)
+                        <div class="col-6 d-flex justify-content-start " name="hobbie">
+                          @if(($hobbieUsu->usuario) == session('usuario')) 
+                            <li value="{{$hobbieUsu->hobbie}}"> {{$hobbieUsu->hobbie}}</li><br>
+                          @endif 
+                        </div>
+                       @endforeach 
+                    </div>
+                  
                   </div>
             </div>
         </div>

@@ -103,12 +103,11 @@
           
             <form id="msform" action="{{route('nuevoUsuario')}}" method="POST">
               @csrf
-              {{-- @method('PUT') --}}
+              {{-- @method('GET') --}}
                 <!-- Progreso -->
                 <ul id="progressbar" >
                   <li class="active" >Genero</li>
                   <li>Preferencia</li>
-                  <li>Hobbies</li>
                   <li>Datos</li>
                   <li>Usuario</li>
                 </ul>
@@ -163,20 +162,6 @@
                   <input type="button" name="next" class="next action-button" value="Next">
                 </fieldset>
 
-                <!-- HOBBIES -->
-                <fieldset>
-                  <h2 class="fs-title">Algunos de mis hobbies son ..</h2>
-                  <!-- select de hobies -->
-                  <div class="row p-3">
-                  @foreach ($hobbies as $hobbie)
-                    <div class="col-6 d-flex justify-content-start ">
-                        <label><input name="hobbie" type="checkbox" id="{{$hobbie->nombre}}" value="{{$hobbie->nombre}}"> {{$hobbie->nombre}}</label><br>
-                    </div>
-                  @endforeach
-                  </div>
-                  <input type="button" name="previous" class="previous action-button" value="Previous">
-                  <input type="button" name="next" class="next action-button" value="Next">
-                </fieldset>
 
                 <!-- DATOS PERSONALES -->
                 <fieldset>
@@ -191,15 +176,6 @@
                     <div class="col-6 d-flex justify-content-center align-items-center">
                       <input type="date" name="fecha" class="datos" required>
                     </div>
-                  </div>
-                  <div class="input-group mb-3">
-                    <label class="input-group-text" for="inputGroupSelect01">Ciudad</label>
-                    <select class="form-select" id="inputGroupSelect01">
-                      <!-- select ciudades -->
-                      @foreach ($ciudades as $ciudad)
-                        <option name="ciudad" value="{{$ciudad->nombre}}">{{$ciudad->nombre}}</option>
-                      @endforeach
-                    </select>
                   </div>
                   <input type="button" name="previous" class="previous action-button" value="Previous">
                   <input type="button" name="next" class="next action-button" value="Next">

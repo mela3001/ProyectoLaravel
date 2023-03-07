@@ -32,14 +32,6 @@
             </ul>
           </div>
      </div>
-     <div>
-      <input type="checkbox" class="checkbox" id="checkbox">
-      <label for="checkbox" class="label">
-        <i class="bi bi-moon"></i>
-        <i class="bi bi-sun-fill"></i>
-        <div class='ball'>
-      </label>
-  </div>
 </nav>
 @endsection
 

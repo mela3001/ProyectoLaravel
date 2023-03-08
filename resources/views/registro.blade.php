@@ -192,7 +192,7 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="footer pt-sm-5">
+    {{-- <footer class="footer pt-sm-5">
         <div class="row d-flex justify-content-center bg-light mt-5">
         <!-- descargar -->
         <div class="col-12 col-md-6  d-flex flex-column align-items-center">
@@ -222,7 +222,7 @@
         <p class="text-center mt-2">Todos los derechos reservados. &copy; LitMacht</p>
     </div>
     
-    </footer>
+    </footer> --}}
 
 <script src="js/inicio.js"></script>
 <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>

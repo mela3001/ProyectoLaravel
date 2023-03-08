@@ -84,19 +84,21 @@
                 </thead>
                 <tbody>
                 @foreach ($usuarios as $usuario)
-                  <tr>
-                      <td>{{$usuario->id}}</td>
-                      <td>{{$usuario->name}}</td>
-                      <td>{{$usuario->usuario}}</td>
-                      <td>{{$usuario->apellido}}</td>
-                      <td>{{$usuario->email}}</td>
-                      <td>{{$usuario->genero}}</td>
-                      <td>{{$usuario->telefono}}</td>
-                      <td>{{$usuario->ciudad}}</td>
-                      <td>{{$usuario->fecha_nac}}</td>
-                      <td>{{$usuario->preferencia}}</td>
-                      <td> <a href="{{route('deleteUsu', $usuario->id)}}" class="btn btn-outline-danger">Eliminar</a></td>
-                  </tr>    
+                  @if($usuario->usuario != 'admin')
+                    <tr>
+                        <td>{{$usuario->id}}</td>
+                        <td>{{$usuario->name}}</td>
+                        <td>{{$usuario->usuario}}</td>
+                        <td>{{$usuario->apellido}}</td>
+                        <td>{{$usuario->email}}</td>
+                        <td>{{$usuario->genero}}</td>
+                        <td>{{$usuario->telefono}}</td>
+                        <td>{{$usuario->ciudad}}</td>
+                        <td>{{$usuario->fecha_nac}}</td>
+                        <td>{{$usuario->preferencia}}</td>
+                        <td> <a href="{{route('deleteUsu', $usuario->id)}}" class="btn btn-outline-danger">Eliminar</a></td>
+                    </tr> 
+                  @endif   
                @endforeach
                 </tbody>
               </table>

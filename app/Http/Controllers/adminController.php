@@ -300,7 +300,7 @@ public function nuevoUsuario(Request $request){
         return view('admin.adminContacta' ,  compact('contactos'));
     }
 
-    /* AÑADE HOBBIE */
+    /* AÑADE HOBBIE */ //----------------------------------------------------------------------------------AÑADIR
     public function anadirHobbie(Request $request){
        /* añado hobbie */
         $hobbie = new Hobbie();
@@ -323,7 +323,7 @@ public function nuevoUsuario(Request $request){
          return view('admin.adminCiudad' ,  compact('ciudades'));
      }
 
-    /* ELIMINA USUARIOS */
+    /* ELIMINA USUARIOS *///-------------------------------------------------------------------------------ELIMINAR
     public function deleteUsu($usuarioId)
     {
         $usuario = User::find($usuarioId);
@@ -359,7 +359,7 @@ public function nuevoUsuario(Request $request){
          return view('admin.adminContacta' ,  compact('contactos'));
      }
 
-     /* MODIFICA HOBBIE */
+     /* MODIFICA HOBBIE */ //-----------------------------------------------------------------------------ACTUALIZAR
      public function updateHobbie(Request $request, $hobbieId)
      { 
         $hobbies = Hobbie::all();

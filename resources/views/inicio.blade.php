@@ -213,12 +213,12 @@
                     <h6>Tengo <b>{{$usuario->edad}}</b> años.</h6>
                     <h6>Si quieres saber más de mí, llámame: <b>{{$usuario->telefono}}</b></h6>
 
-                    <form action="" method="post">
+                    {{-- <form action="" method="post">
                       @csrf
                       <input type="hidden" value="{{session('usuario')}}" name="usuarioDaMg">
-                      <input type="hidden" value="{{$usuario->usuario}}" name="usuarioRecibeMg">
-                      <button class="boton mg" type="submit"><i class="bi bi-heart-fill"></i></button>
-                    </form>
+                      <input type="hidden" value="{{$usuario->usuario}}" name="usuarioRecibeMg"> --}}
+                      {{-- <button class="boton mg" type="submit"><i class="bi bi-heart-fill"></i></button> --}}
+                    {{-- </form> --}}
                   </div>
                 </div>
                 @endif

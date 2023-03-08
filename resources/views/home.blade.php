@@ -150,12 +150,25 @@
                           <textarea  name ="mensaje" placeholder="Mensaje" data-form-field="message" class="form-control display-7" id="mensaje"></textarea>
                       </div>
                    </div>
-                   <div class="mbr-section-btn mt-4"><button type="submit" class="btn btn-lg btn-primary display-4">Contactar...<i class="bi bi-telephone-forward"></i></button></div>
+                   <div class="mbr-section-btn mt-4"><button type="submit" class="btn btn-lg btn-primary display-4"  id="btn-toast">Contactar...<i class="bi bi-telephone-forward"></i></button></div>
                   </form>
+                  
               </div>
           </div>
           </div>
         </div>
+        <div class="position-fixed bottom-0 end-0 p-5">
+                    <div class="toast show" id="toast1">
+                         <div class="toast-header d-flex justify-content-evenly w-100">
+                             <strong>Nuevo mensaje</strong>
+                             {{-- <small>Hace 1 minutos</small> --}}
+                             <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+                         </div>
+                         <div class="toast-body">
+                             <p>Mensaje enviado.</p>
+                         </div>
+                     </div> 
+                 </div>
       </section>
   </main>
 

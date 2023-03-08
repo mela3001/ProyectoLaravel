@@ -67,7 +67,7 @@
         {{-- PREFIERE HOMBRE--}}
           @if(session('preferenciaUsuarioActivo') == 'Hombre')
             @if(($usuario->genero == 'Hombre' && $usuario->preferencia == session('generoUsuarioActivo')) || ($usuario->genero == 'Hombre' && $usuario->preferencia == 'Todo') )
-            <div class="curso">
+            <div class="curso" style="min-width: 300px; max-width: 400px;">
                 <div class="curso__imagen">
                   <img class="imagen-curso" src='img/{{$usuario->imagen}}' alt="Imagen del usuario">
                 </div>
@@ -95,7 +95,7 @@
             {{-- PREFIERE MUJER --}}
           @elseif(session('preferenciaUsuarioActivo') == 'Mujer')
             @if(($usuario->genero == 'Mujer' && $usuario->preferencia == session('generoUsuarioActivo')) || ($usuario->genero == 'Mujer' && $usuario->preferencia == 'Todo') )
-              <div class="curso">
+              <div class="curso" style="min-width: 300px; max-width: 400px;">
                   <div class="curso__imagen">
                     <img class="imagen-curso" src='img/{{$usuario->imagen}}' alt="Imagen del usuario">
                   </div>
@@ -123,7 +123,7 @@
           @else
           {{-- PREFIERE TODO --}}
             @if($usuario->preferencia == session('generoUsuarioActivo') || $usuario->preferencia == 'Todo')
-              <div class="curso">
+              <div class="curso" style="min-width: 300px; max-width: 400px;">
                     <div class="curso__imagen">
                       <img class="imagen-curso" src='img/{{$usuario->imagen}}' alt="Imagen del usuario">
                     </div>
@@ -171,7 +171,7 @@
             @if(($mg -> usuarioDaMg) == session('usuario'))
               @foreach($usuarios as $usuario)
                 @if(($usuario -> usuario) == ($mg -> usuarioRecibeMg) )
-                <div class="curso">
+                <div class="curso" style="min-width: 300px; max-width: 400px;">
                   <div class="curso__imagen">
                     <img class="imagen-curso" src='img/{{$usuario->imagen}}' alt="Imagen del usuario">
                   </div>
@@ -203,7 +203,7 @@
             @if(($mg -> usuarioRecibeMg) == session('usuario'))
               @foreach($usuarios as $usuario)
                 @if(($usuario -> usuario) == ($mg -> usuarioDaMg) )
-                <div class="curso">
+                <div class="curso" style="min-width: 300px; max-width: 400px;">
                   <div class="curso__imagen">
                     <img class="imagen-curso" src='img/{{$usuario->imagen}}' alt="Imagen del usuario">
                   </div>
@@ -233,9 +233,9 @@
           @foreach($megustas as $mg)
               @foreach($usuarios as $usuario)
                 @if((($usuario -> usuario) == ($mg -> usuarioDaMg)) && (($mg -> usuarioRecibeMg) == session('usuario')) )
-                <div class="curso">
+                <div class="curso" style="min-width: 300px; max-width: 400px;">
                   <div class="curso__imagen">
-                    <img class="imagen-curso" src='img/{{$usuario->imagen}}' alt="Imagen del usuario">
+                    <img class="imagen-curso" src='/img/{{$usuario->imagen}}' alt="Imagen del usuario">
                   </div>
                   <div class="info-curso">
                     <h3>{{$usuario->usuario}}</h3>

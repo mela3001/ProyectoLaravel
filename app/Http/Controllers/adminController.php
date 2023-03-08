@@ -129,7 +129,7 @@ class adminController extends Controller
         $imagen = $request->file('imagen');
         $nombreImagen=$imagen->hashName();
         $imagen->move($ruta, $nombreImagen);
-
+        session(['usuarioImg' => $nombreImagen]);
         $usu = $request->usuario;
         
         User::where('usuario', $usu)

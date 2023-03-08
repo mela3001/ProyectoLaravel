@@ -322,6 +322,7 @@
                     <div class="row mt-3">
                         <div class="col-md-6"><label class="labels">Género</label>
                           <select class="form-control" name="genero">
+                            <option value="{{session('usuarioGenero')}}">{{session('usuarioGenero')}}</option>
                               <option value="Hombre">Hombre</option>
                               <option value="Mujer">Mujer</option>
                               <option value="Otro">Otro</option>
@@ -329,6 +330,7 @@
                         </div>
                         <div class="col-md-6"><label class="labels">Preferencia</label>
                           <select class="form-control" name="preferencia">
+                            <option value="{{session('usuarioPreferencia')}}">{{session('usuarioPreferencia')}}</option>
                             <option value="Hombre">Hombre</option>
                             <option value="Mujer">Mujer</option>
                             <option value="Todo">Todo</option>

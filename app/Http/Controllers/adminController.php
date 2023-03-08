@@ -50,8 +50,10 @@ class adminController extends Controller
                             session()->forget('usuario');
                             session(['usuario' => $usuario -> usuario] );
                             session(['usuarioId' => $usuario -> id] );
-                            session(['usuarioCiudad' => $usuario -> ciudad]);
-                            session(['usuarioImg' => $usuario -> imagen]);
+                            // session(['usuarioCiudad' => $usuario -> ciudad]);
+                            // session(['usuarioImg' => $usuario -> imagen]);
+                            // session(['usuarioGenero' => $usuario->genero]);
+                            // session(['usuarioPreferencia' => $usuario->preferencia]);
                         }
                     }else{
                         $loginCorrecto=true;
@@ -61,6 +63,8 @@ class adminController extends Controller
                         session( ['generoUsuarioActivo' => $usuario -> genero]);
                         session(['usuarioCiudad' => $usuario -> ciudad]);
                         session(['usuarioImg' => $usuario -> imagen]);
+                        session(['usuarioGenero' => $usuario->genero]);
+                        session(['usuarioPreferencia' => $usuario->preferencia]);
                     }
                     
                 } 
@@ -102,6 +106,8 @@ class adminController extends Controller
         $genero = $request->genero;
         $preferencia = $request->preferencia;
         session(['usuarioCiudad' => $request -> ciudad]);
+        session(['usuarioGenero' => $genero]);
+        session(['usuarioPreferencia' => $preferencia]);
         User::where('usuario', $usu)
         ->update(['name'=>$nombre, 'apellido'=>$apellido, 'telefono'=>$telefono, 'ciudad'=>$ciudad,'genero'=>$genero,'preferencia'=>$preferencia]);
 
